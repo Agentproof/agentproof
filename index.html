@@ -140,7 +140,7 @@ footer{
   color:var(--green);
   text-decoration:underline;
 }
-/* --- Trust badge row --- */
+/* ----- Uniform trust badges ----- */
 .badge-row{
   display:flex;
   flex-wrap:wrap;
@@ -149,20 +149,27 @@ footer{
   margin:3rem 0;
 }
 
-/* identical size, no extra frame */
-.badge-row img{
-  height:36px;            /* fixed, equal height           */
-  width:160px;            /* equal visual width            */
-  object-fit:contain;     /* scale narrower/wider badges   */
-  background:transparent; /* keeps site gradient visible   */
-  border:none;            /* no outline, no “button” look  */
-  box-shadow:none;
-  pointer-events:none;    /* never clickable               */
+.trust-badge{
+  width:190px;               /* identical width desktop */
+  height:40px;               /* identical height        */
+  background:#11173a;        /* blends with card colour */
+  border:1px solid var(--green);
+  border-radius:6px;
+  color:var(--green);
+  font-size:.8rem;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  letter-spacing:.3px;
+  pointer-events:none;       /* never looks clickable   */
+  user-select:none;
 }
 
-/* phones ≤480 px: slightly narrower so two per row */
+/* phones ≤480 px: two-per-row or one-per-row, still equal size */
 @media(max-width:480px){
-  .badge-row img{width:140px}
+  .trust-badge{width:160px}
 }
 </style>
 </head>
@@ -303,12 +310,12 @@ footer{
 
   </div>
 </section>
-<!-- TRUST BADGE STRIP (4 badges, uniform style) -->
+<!-- TRUST BADGES -->
 <div class="badge-row">
-  <img src="https://img.shields.io/badge/SOC%202-Ready-0f9d58?style=for-the-badge"   alt="SOC 2 Ready">
-  <img src="https://img.shields.io/badge/ISO%2027001-Aligned-0f9d58?style=for-the-badge" alt="ISO 27001">
-  <img src="https://img.shields.io/badge/Insurance-Approved-0f9d58?style=for-the-badge"  alt="Insurance Approved">
-  <img src="https://img.shields.io/badge/Stripe-Secure%20Checkout-0f9d58?style=for-the-badge" alt="Stripe Secure">
+  <span class="trust-badge">SOC&nbsp;2 Ready</span>
+  <span class="trust-badge">ISO&nbsp;27001 Aligned</span>
+  <span class="trust-badge">Insurance&nbsp;Approved</span>
+  <span class="trust-badge">Stripe Secure Checkout</span>
 </div>
 </div>
   
