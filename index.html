@@ -155,6 +155,20 @@ footer{
 .badge-row img{
   height:40px;
 } 
+/* === Trust badge grid === */
+.badge-row{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); /* equal columns */
+  gap:24px;
+  justify-items:center;
+  margin:3rem 0;
+  background:transparent;   /* keeps gradient visible */
+}
+.badge-row img{
+  height:40px;
+  border-radius:6px;        /* rounded edges = badge vibe */
+  box-shadow:0 2px 8px rgba(0,0,0,.25); /* soft shadow */
+}
 </style>
 </head>
 <body>
@@ -296,10 +310,10 @@ footer{
 </section>
 <!-- TRUST BADGE STRIP (4 badges, uniform style) -->
 <div class="badge-row">
-  <span><img src="https://img.shields.io/badge/SOC%202-Ready-0f9d58?style=for-the-badge"   alt="SOC 2 Ready"></span>
-  <span><img src="https://img.shields.io/badge/ISO%2027001-Aligned-0f9d58?style=for-the-badge" alt="ISO 27001"></span>
-  <span><img src="https://img.shields.io/badge/Insurance-Approved-0f9d58?style=for-the-badge"  alt="Insurance Approved"></span>
-  <span><img src="https://img.shields.io/badge/Stripe-Secure%20Checkout-0f9d58?style=for-the-badge" alt="Stripe Secure"></span>
+  <img src="https://img.shields.io/badge/SOC%202-Ready-0f9d58?style=for-the-badge"   alt="SOC 2 Ready">
+  <img src="https://img.shields.io/badge/ISO%2027001-Aligned-0f9d58?style=for-the-badge" alt="ISO 27001">
+  <img src="https://img.shields.io/badge/Insurance-Approved-0f9d58?style=for-the-badge"  alt="Insurance Approved">
+  <img src="https://img.shields.io/badge/Stripe-Secure%20Checkout-0f9d58?style=for-the-badge" alt="Stripe Secure">
 </div>
 </div>
   
