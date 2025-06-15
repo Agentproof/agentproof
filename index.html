@@ -140,34 +140,29 @@ footer{
   color:var(--green);
   text-decoration:underline;
 }
- .badge-row{
+/* ---- Trust badge styling ---- */
+.badge-row{
   display:flex;
   flex-wrap:wrap;
-  gap:28px;
   justify-content:center;
+  gap:16px;
   margin:3rem 0;
 }
-.badge-row span{
-  width:190px;              /* same visual width for every badge */
-  display:flex;
-  justify-content:center;
-}
+
 .badge-row img{
+  width:160px;          /* visual width equalised */
   height:40px;
-} 
-/* === Trust badge grid === */
-.badge-row{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); /* equal columns */
-  gap:24px;
-  justify-items:center;
-  margin:3rem 0;
-  background:transparent;   /* keeps gradient visible */
+  object-fit:contain;
+  background:#11173a;   /* same dark plate as cards */
+  border:1px solid var(--green);
+  border-radius:6px;
+  box-shadow:none;      /* prevents "buttony" shadow */
+  pointer-events:none;  /* never looks clickable    */
 }
-.badge-row img{
-  height:40px;
-  border-radius:6px;        /* rounded edges = badge vibe */
-  box-shadow:0 2px 8px rgba(0,0,0,.25); /* soft shadow */
+
+/* tighten on small screens */
+@media(max-width:480px){
+  .badge-row img{width:140px}
 }
 </style>
 </head>
