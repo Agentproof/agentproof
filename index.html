@@ -90,6 +90,13 @@ footer{
   .hero h1{font-size:2rem}
   .card{width:100%;max-width:360px}
 }
+@media(max-width:500px){
+  header{
+    padding:.8rem 1rem;
+    position:static;      /* disables sticky header on tiny screens */
+  }
+  .stickyCTA{display:none} /* hides floating CTA button */
+}
 </style>
 </head>
 <body>
