@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --green:#0f9d58;       /* toned-down enterprise green */
+  --green:#0f9d58;      /* muted enterprise green */
   --green-dark:#0c7b45;
 }
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
@@ -17,7 +17,7 @@ body{
 }
 header{
   display:flex;justify-content:space-between;align-items:center;
-  padding:1rem 1.5rem;position:sticky;top:0;z-index:9;background:transparent;
+  padding:1rem 1.5rem;position:sticky;top:0;z-index:9;background:transparent
 }
 header h1{font-size:1.3rem;font-weight:700}
 header nav a{color:var(--green);text-decoration:none;margin-left:1.2rem;font-weight:600}
@@ -40,11 +40,13 @@ h2.section-title::after{
   content:'';display:block;width:70px;height:3px;background:var(--green);
   margin:8px auto 0
 }
+/* Pricing cards */
 .pricing-wrap{
   display:flex;flex-wrap:wrap;justify-content:center;gap:2rem
 }
 .card{
-  background:rgba(17,23,58,.9);border-radius:12px;padding:2rem 1.5rem;width:310px;
+  background:rgba(17,23,58,.9);
+  border-radius:12px;padding:2rem 1.5rem;width:310px;
   display:flex;flex-direction:column;box-shadow:0 10px 32px rgba(0,0,0,.35);
   transition:transform .3s
 }
@@ -53,9 +55,13 @@ h2.section-title::after{
 .price{color:var(--green);font-size:1.15rem;font-weight:700;margin-bottom:1rem}
 .card ul{list-style:none;text-align:left;font-size:.95rem;color:#ccd2e3;margin-bottom:1.4rem;padding-left:0}
 .card li::before{content:"✔ ";color:var(--green)}
-.card .btn{margin-top:auto;width:100%}
-.extra{padding:3rem 1.5rem;margin-top:3rem;background:transparent}
+.card .btn{margin-top:auto;width:100%}   /* align buttons */
+/* Extra CTA sections */
+.extra{
+  padding:3rem 1.5rem;margin-top:3rem;background:transparent;
+}
 .extra p{color:#a8b2d1;max-width:800px;margin:0 auto 1.2rem}
+/* Modal */
 #modal{
   display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);
   justify-content:center;align-items:center;z-index:99;padding:1rem
@@ -67,13 +73,18 @@ h2.section-title::after{
 .modal-box h2{font-size:1.45rem;text-align:center;margin-bottom:1rem}
 .close{position:absolute;top:10px;right:14px;background:none;border:none;font-size:1.4rem;color:#666;cursor:pointer}
 .modal-box input,.modal-box select,.modal-box textarea{
-  width:100%;padding:10px;margin-bottom:1rem;border:1px solid #d1d5db;border-radius:4px;font-size:.97rem
+  width:100%;padding:10px;margin-bottom:1rem;
+  border:1px solid #d1d5db;border-radius:4px;font-size:.97rem
 }
 .modal-box button[type=submit]{
   width:100%;background:var(--green);color:#0a0e27;font-weight:700;
   border:none;border-radius:6px;padding:12px;cursor:pointer
 }
-footer{text-align:center;padding:2rem 1rem;border-top:1px solid rgba(255,255,255,.15);color:#8892b0;font-size:.85rem}
+footer{
+  text-align:center;padding:2rem 1rem;border-top:1px solid rgba(255,255,255,.15);
+  color:#8892b0;font-size:.85rem
+}
+/* Mobile */
 @media(max-width:768px){
   header nav a{margin-left:.8rem;font-size:.9rem}
   .hero h1{font-size:2rem}
@@ -84,7 +95,10 @@ footer{text-align:center;padding:2rem 1rem;border-top:1px solid rgba(255,255,255
 <body>
 <header>
   <h1>AgentProof</h1>
-  <nav><a href="#plans">Plans</a><a href="#consulting">Consulting</a><a href="#partner">Partner</a><a href="#join">Careers</a></nav>
+  <nav>
+    <a href="#plans">Plans</a><a href="#consulting">Consulting</a>
+    <a href="#partner">Partner</a><a href="#join">Careers</a>
+  </nav>
 </header>
 
 <section class="hero">
@@ -101,19 +115,19 @@ footer{text-align:center;padding:2rem 1rem;border-top:1px solid rgba(255,255,255
       <h3>Stability Scan &amp; Report</h3>
       <div class="price">$299 one-time</div>
       <ul><li>Observability baseline</li><li>Fragility / error burst detection</li><li>30-day trend PDF</li></ul>
-      <a class="btn" href="https://buy.stripe.com/sample1">Get&nbsp;Started</a>
+      <a class="btn" href="https://buy.stripe.com/sample1">Get Started</a>
     </div>
     <div class="card">
       <h3>Monitoring + Certification</h3>
-      <div class="price">$99/mo&nbsp;or&nbsp;$999/yr</div>
+      <div class="price">$99/mo or $999/yr</div>
       <ul><li>Rolling 30-day observability</li><li>Certification badge</li><li>Daily tracking (10 agents)</li></ul>
-      <a class="btn" href="https://buy.stripe.com/sample2">Get&nbsp;Started</a>
+      <a class="btn" href="https://buy.stripe.com/sample2">Get Started</a>
     </div>
     <div class="card">
       <h3>Enterprise Monitoring &amp; Audit</h3>
       <div class="price">$2999 or $299/mo</div>
       <ul><li>24/7 drift alerts</li><li>Risk scoring &amp; SOC2/ISO reports</li><li>Dedicated success partner</li></ul>
-      <a class="btn" href="https://buy.stripe.com/sample3">Get&nbsp;Started</a>
+      <a class="btn" href="https://buy.stripe.com/sample3">Get Started</a>
     </div>
   </div>
 </section>
@@ -136,7 +150,7 @@ footer{text-align:center;padding:2rem 1rem;border-top:1px solid rgba(255,255,255
   <button class="btn" onclick="openForm('Career')">Apply Now</button>
 </section>
 
-<!-- modal -->
+<!-- Modal -->
 <div id="modal">
   <div class="modal-box">
     <button class="close" onclick="closeForm()">&times;</button>
@@ -149,9 +163,7 @@ footer{text-align:center;padding:2rem 1rem;border-top:1px solid rgba(255,255,255
       <input type="tel" name="phone" placeholder="Phone Number">
       <select name="reason" id="reasonSelect" required>
         <option value="">Reason for Contact</option>
-        <option value="Consulting">Consulting</option>
-        <option value="Partnership">Partnership</option>
-        <option value="Career">Career</option>
+        <option value="Consulting">Consulting</option><option value="Partnership">Partnership</option><option value="Career">Career</option>
       </select>
       <textarea name="message" rows="4" placeholder="Tell us more…" required></textarea>
       <button type="submit">Submit</button>
