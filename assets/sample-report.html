@@ -1,100 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>AgentProof – Sample Stability Report</title>
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><title>AgentProof – Sample Stability Report</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{--green:#0f9d58}
 body{font-family:'Inter',sans-serif;background:#0a0e27;color:#e6e9f0;margin:0;padding:0 1.2rem;line-height:1.6}
 h1,h2{color:#fff;margin:1.6rem 0 .8rem}
 h3{color:var(--green);margin:1.2rem 0 .4rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
 .card{background:#11173a;border-radius:10px;padding:1.2rem}
-ul{padding-left:1.1rem}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+td,th{padding:.4rem .6rem;border-bottom:1px solid #2a2f4a}
+th{color:#ccd2e3;text-align:left;font-weight:600}
+.bad{color:#ff6b6b}
+.good{color:#0f9d58}
 .blur{filter:blur(3px);cursor:pointer;transition:.2s}
 .blur:hover{filter:none}
 .cta{background:var(--green);color:#0a0e27;border:none;border-radius:6px;padding:.9rem 1.4rem;font-weight:700;text-decoration:none;display:inline-block;margin-top:.8rem}
 small{color:#8892b0;font-size:.8rem}
 @media(max-width:600px){body{padding:0 .8rem}}
-</style>
-</head>
-<body>
+</style></head><body>
 
 <h1>AgentProof – Stability Scan <span style="color:var(--green);font-size:1.25rem">Sample</span></h1>
-<p>Date · May 2025</p>
+<p>Date · May&nbsp;2025</p>
 
 <!-- Executive summary -->
 <h2>Executive Summary</h2>
 <div class="grid">
-  <div class="card"><h3>Overall Health</h3><p style="font-size:2.2rem;margin:.3rem 0">86 / 100</p></div>
-  <div class="card"><h3>Coverage</h3><p style="font-size:1.2rem;margin:.3rem 0">4 agents · 32 prompts</p></div>
-  <div class="card"><h3>Critical Incidents</h3><p style="font-size:2.2rem;margin:.3rem 0">2</p></div>
-  <div class="card"><h3>Est. 30-Day Cost</h3><p style="font-size:2.2rem;margin:.3rem 0">$1 215</p></div>
+  <div class="card"><h3>Overall Score</h3><p style="font-size:2.2rem;margin:.3rem 0">86 / 100</p></div>
+  <div class="card"><h3>Agents Covered</h3><p style="font-size:1.2rem;margin:.3rem 0">4 agents · 32 prompts</p></div>
+  <div class="card"><h3>Critical Findings</h3><p style="font-size:2.2rem;margin:.3rem 0">2</p></div>
+  <div class="card"><h3>Cost Forecast 30d</h3><p style="font-size:2.2rem;margin:.3rem 0">$1 215</p></div>
 </div>
 
-<!-- Latency chart -->
-<h2>Latency – Last 24 Hours</h2>
-<img src="https://quickchart.io/chart?c={type:'line',data:{labels:['0','3','6','9','12','15','18','21','24'],datasets:[{data:[820,830,812,845,850,860,855,840,830],borderColor:'%230f9d58',fill:false}]},options:{plugins:{legend:{display:false}},backgroundColor:'transparent'}}"
-     alt="Latency chart" style="max-width:640px;width:100%;border-radius:8px">
+<!-- Radar chart -->
+<h2>Security &amp; Behaviour Radar</h2>
+<img src="https://quickchart.io/chart?c={type:'radar',data:{labels:['API-Key Exposure','Rate-Limit Guard','Input Sanitization','Fingerprint Drift','Echo Leak','Token Spike'],datasets:[{data:[65,80,60,55,50,70],backgroundColor:'rgba(15,157,88,0.4)',borderColor:'%230f9d58'}]},options:{plugins:{legend:{display:false}},scales:{r:{grid:{color:'#2a2f4a'},pointLabels:{color:'#ccd2e3'}}},backgroundColor:'transparent'}}"
+     alt="Radar chart" style="max-width:520px;width:100%;border-radius:8px">
 
-<!-- Incidents chart -->
-<h2>Incident Breakdown (Past Week)</h2>
-<img src="https://quickchart.io/chart?c={type:'bar',data:{labels:['Prompt Drift','Cost Spike','Fail Burst','Token Overuse'],datasets:[{data:[3,1,2,4],backgroundColor:'%230f9d58'}]},options:{plugins:{legend:{display:false}},backgroundColor:'transparent'}}"
-     alt="Incident chart" style="max-width:480px;width:100%;border-radius:8px">
+<!-- Findings table -->
+<h2>Key Findings</h2>
+<table>
+<tr><th>Check</th><th>Status</th><th>Example</th></tr>
+<tr><td>🔐 API-Key Leak</td><td class="bad">2 high</td><td class="blur">Hard-coded <code>sk-live-•••</code> in util.py</td></tr>
+<tr><td>⚡ Rate-Limit Heuristic</td><td class="bad">1 med</td><td class="blur">Looping LLM call w/ no delay</td></tr>
+<tr><td>🛡️ Input Sanitization</td><td class="bad">3 med</td><td class="blur">User input f-string into prompt</td></tr>
+<tr><td>🧬 Fingerprint Drift</td><td class="bad">1 med</td><td class="blur">Agent-B response deviates >25 %</td></tr>
+<tr><td>🔊 Echo Leak</td><td class="bad">1 high</td><td class="blur">User email reflected in reply</td></tr>
+<tr><td>🚨 Unauthorized Call Pattern</td><td class="bad">1 med</td><td class="blur">OpenAI call from non-whitelisted IP</td></tr>
+<tr><td>📈 Token Spike Anomaly</td><td class="bad">1 med</td><td class="blur">+480 % tokens vs baseline</td></tr>
+<tr><td>Latency SLO</td><td class="good">✓ within 900 ms</td><td>—</td></tr>
+</table>
+<small>Hover redacted cells to preview full detail.</small>
 
 <!-- Recommendations -->
-<h2>Sample Remediation Actions</h2>
+<h2>High-Impact Fixes (excerpt)</h2>
 <ol>
-  <li><span class="blur">Regenerate vector index with updated token limits (drops p95 latency by 140 ms).</span></li>
-  <li><span class="blur">Inject guard variable for currency conversion to cap cost spikes.</span></li>
-  <li><span class="blur">Refactor prompt #17 to remove nested JSON—cuts fail burst by 60 %.</span></li>
+  <li><span class="blur">Move secrets to env vars; rotate exposed keys.</span></li>
+  <li><span class="blur">Throttle vector-search loop with exponential back-off.</span></li>
+  <li><span class="blur">Escape user-supplied content before prompt insertion.</span></li>
+  <li><span class="blur">Lock agent replies to whitelisted domains to prevent echo leak.</span></li>
 </ol>
-<small>Hover to reveal.</small>
 
-<!-- Cost projection -->
-<h2>ROI Projection After Fixes</h2>
+<!-- ROI -->
+<h2>Projected ROI After Fixes</h2>
 <div class="grid">
-  <div class="card">
-    <h3>Forecast Spend</h3>
-    <p>$1 215 ➜ <span style="color:var(--green)">$795</span></p>
-  </div>
-  <div class="card">
-    <h3>Projected Savings</h3>
-    <p>$420 / mo</p>
-  </div>
-  <div class="card">
-    <h3>Payback</h3>
-    <p>&lt; 1 week</p>
-  </div>
+  <div class="card"><h3>Spend After Fix</h3><p>$795 / 30 d</p></div>
+  <div class="card"><h3>Est. Savings</h3><p>$420 / mo</p></div>
+  <div class="card"><h3>Payback</h3><p>&lt; 1 week</p></div>
 </div>
 
-<!-- Next steps CTA -->
+<!-- Upsell CTA -->
 <h2>Next Steps</h2>
-<p>Unlock continuous monitoring &amp; certification.</p>
-
+<p>Go continuous—daily scans, live drift alerts, certification badge.</p>
 <div class="grid">
   <div class="card" style="text-align:center">
-    <h3 style="color:var(--green);margin-bottom:.4rem">$299&nbsp;/ mo</h3>
-    <p style="font-size:.9rem;margin:.4rem 0">Live drift alerts &amp; fresh badge every 30 days.</p>
-    <a href="https://buy.stripe.com/placeholder-month" class="cta">Start monthly</a>
+    <h3 style="color:var(--green);margin-bottom:.4rem">$299 / mo</h3>
+    <p style="font-size:.9rem;margin:.4rem 0">Monthly monitoring<br>&amp; badge refresh</p>
+    <a href="#" class="cta">Start monthly</a>
   </div>
   <div class="card" style="text-align:center">
-    <h3 style="color:var(--green);margin-bottom:.4rem">$2 499&nbsp;/ yr</h3>
-    <p style="font-size:.9rem;margin:.4rem 0">Same protection · 2 months free.</p>
-    <a href="https://buy.stripe.com/placeholder-annual" class="cta">Start annual</a>
+    <h3 style="color:var(--green);margin-bottom:.4rem">$2 499 / yr</h3>
+    <p style="font-size:.9rem;margin:.4rem 0">2 months free</p>
+    <a href="#" class="cta">Start annual</a>
   </div>
 </div>
 
-<p style="margin:1.4rem 0">Need team-wide certification?</p>
-<a href="https://buy.stripe.com/placeholder-monitor" style="color:var(--green);text-decoration:underline">
-  View the $999 Monitoring&nbsp;+ Certification tier →
+<p style="margin:1.4rem 0">Need SOC-ready certification?</p>
+<a href="#" style="color:var(--green);text-decoration:underline">
+  View the $999 Monitoring + Certification tier →
 </a>
 
-<!-- Footer -->
 <p style="margin:3rem 0 1.2rem;font-size:.8rem;color:#8892b0">
-  Generated by AgentProof Engine · Synthetic data for demo purposes only.
+  Generated by AgentProof Engine · Synthetic data for demonstration only.
 </p>
-
-</body>
-</html>
+</body></html>
