@@ -7,12 +7,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--green:#00ff88;--green-dark:#0c7b45}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;background:#0a0e27;color:#fff;line-height:1.7}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
+body{background:#0a0e27;color:#fff;line-height:1.7}
 header{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;position:sticky;top:0;background:#0a0e27;z-index:9}
 header h1{font-size:1.3rem;font-weight:700}
 header nav a{color:var(--green);text-decoration:none;margin-left:1.2rem;font-weight:600}
-.hero{padding:4rem 1.5rem 3rem;text-align:center;background:linear-gradient(180deg,#0a0e27 0%,#11173a 100%)}
+.hero{padding:4rem 1.5rem 3rem;text-align:center;background:linear-gradient(180deg,#0a0e27,#11173a)}
 .hero h1{font-size:2.4rem;font-weight:700;margin-bottom:.8rem}
 .hero p{font-size:1.1rem;color:#a8b2d1;max-width:820px;margin:0 auto 1.6rem}
 .checks{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;font-size:.95rem;color:#ccf;margin-bottom:1.5rem}
@@ -38,7 +38,6 @@ h2.section-title::after{content:'';display:block;width:70px;height:3px;backgroun
 .modal-box input,.modal-box select,.modal-box textarea{width:100%;padding:10px;margin-bottom:1rem;border:1px solid #d1d5db;border-radius:4px;font-size:.98rem}
 .modal-box button[type=submit]{background:var(--green);color:#0a0e27;font-weight:700;border:none;border-radius:6px;padding:12px;width:100%}
 footer{text-align:center;padding:2rem 1rem;border-top:1px solid rgba(255,255,255,.15);color:#8892b0;font-size:.85rem}
-/* mobile */
 @media(max-width:768px){
   header nav a{margin-left:.8rem;font-size:.9rem}
   .hero h1{font-size:2rem}
@@ -49,9 +48,7 @@ footer{text-align:center;padding:2rem 1rem;border-top:1px solid rgba(255,255,255
 <body>
 <header>
   <h1>AgentProof</h1>
-  <nav>
-    <a href="#plans">Plans</a><a href="#consulting">Consulting</a><a href="#partner">Partner</a><a href="#join">Careers</a>
-  </nav>
+  <nav><a href="#plans">Plans</a><a href="#consulting">Consulting</a><a href="#partner">Partner</a><a href="#join">Careers</a></nav>
 </header>
 
 <section class="hero">
@@ -67,27 +64,27 @@ footer{text-align:center;padding:2rem 1rem;border-top:1px solid rgba(255,255,255
     <div class="card">
       <h3>Stability Scan &amp; Report</h3>
       <div class="price">$299 one-time</div>
-      <ul><li>Observability baseline</li><li>Fragility / error burst detection</li><li>30-day trend projection (PDF)</li></ul>
-      <a class="btn" href="https://buy.stripe.com/sample-link-1">Get Started</a>
+      <ul><li>Observability baseline</li><li>Fragility / error burst detection</li><li>30-day trend PDF</li></ul>
+      <a class="btn" href="https://buy.stripe.com/sample1">Get Started</a>
     </div>
     <div class="card">
       <h3>Monitoring + Certification</h3>
-      <div class="price">$99/mo&nbsp;or&nbsp;$999/yr</div>
+      <div class="price">$99/mo or $999/yr</div>
       <ul><li>Rolling 30-day observability</li><li>Certification badge</li><li>Daily tracking (10 agents)</li></ul>
-      <a class="btn" href="https://buy.stripe.com/sample-link-2">Get Started</a>
+      <a class="btn" href="https://buy.stripe.com/sample2">Get Started</a>
     </div>
     <div class="card">
-      <h3>Enterprise Monitoring&nbsp;&amp;&nbsp;Audit</h3>
+      <h3>Enterprise Monitoring &amp; Audit</h3>
       <div class="price">$2999 or $299/mo</div>
       <ul><li>24/7 drift alerts</li><li>Risk scoring &amp; SOC2/ISO reports</li><li>Dedicated success partner</li></ul>
-      <a class="btn" href="https://buy.stripe.com/sample-link-3">Get Started</a>
+      <a class="btn" href="https://buy.stripe.com/sample3">Get Started</a>
     </div>
   </div>
 </section>
 
 <section id="consulting" class="extra">
   <h2 class="section-title">Enterprise Compliance &amp; Consulting</h2>
-  <p>Our experts deliver SOC 2, ISO frameworks, and custom audit-readiness plans, ensuring your AI systems exceed enterprise standards.</p>
+  <p>Our experts deliver SOC 2, ISO frameworks, and custom audit-readiness plans—ensuring your AI systems exceed enterprise standards.</p>
   <button class="btn" onclick="openForm('Consulting')">Request Consulting</button>
 </section>
 
