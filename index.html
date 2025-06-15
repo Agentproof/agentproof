@@ -97,6 +97,26 @@ footer{
   }
   .stickyCTA{display:none} /* hides floating CTA button */
 }
+/* --- Mobile header & hero tweaks (≤ 500 px) --- */
+@media(max-width:500px){
+  header{
+    padding:.6rem .8rem;               /* tighter top bar    */
+    gap:.4rem;                         /* prevent wrapping   */
+    white-space:nowrap;
+  }
+  header h1{
+    font-size:1rem;                    /* smaller logo text  */
+  }
+  header nav a{
+    margin-left:.6rem;                 /* tighter link gap   */
+    font-size:.8rem;                   /* smaller link text  */
+  }
+
+  .hero h1{
+    font-size:1.6rem;                  /* smaller hero title */
+    line-height:1.25;
+  }
+}
 </style>
 </head>
 <body>
