@@ -1,257 +1,148 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="AgentProof offers agent stability monitoring and certification for AI systems. Get real-time insights, observability, and audit readiness." />
-  <meta name="keywords" content="AI agent monitoring, stability scan, observability, compliance, certification, audit readiness" />
-  <meta name="author" content="AgentProof" />
-  <meta property="og:title" content="AgentProof – AI Agent Stability Monitoring" />
-  <meta property="og:description" content="Industry-standard observability and monitoring for autonomous agents." />
-  <meta property="og:image" content="https://yourdomain.com/images/og-image.jpg" />
-  <meta property="og:type" content="website" />
-  <title>AgentProof – AI Agent Monitoring Plans</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #0a0e27;
-      color: #ffffff;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 2rem;
-      background-color: #0a0e27;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 1.5rem;
-    }
-    nav a {
-      color: #00ff88;
-      text-decoration: none;
-      margin-left: 2rem;
-      font-weight: 600;
-    }
-    .hero {
-      padding: 6rem 2rem 4rem;
-      text-align: center;
-      background: linear-gradient(180deg, #0a0e27 0%, #0f1332 100%);
-    }
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      font-size: 1.25rem;
-      color: #a8b2d1;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .section {
-      padding: 4rem 2rem;
-    }
-    .section h2 {
-      text-align: center;
-      font-size: 2.25rem;
-      margin-bottom: 2rem;
-    }
-    .section p {
-      max-width: 800px;
-      margin: 0 auto 2rem;
-      text-align: center;
-      color: #a8b2d1;
-      line-height: 1.6;
-    }
-    .pricing-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-    }
-    .pricing-card {
-      background: #11173a;
-      padding: 2rem;
-      border-radius: 12px;
-      width: 300px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .pricing-card h3 {
-      margin-top: 0;
-      font-size: 1.5rem;
-    }
-    .pricing-card .price {
-      font-size: 1.25rem;
-      font-weight: bold;
-      color: #00ff88;
-    }
-    .pricing-card ul {
-      list-style: none;
-      padding-left: 0;
-      margin-top: 1rem;
-      color: #a8b2d1;
-      font-size: 0.95rem;
-    }
-    .pricing-card li::before {
-      content: "✔ ";
-      color: #00ff88;
-    }
-    .cta-button {
-      margin-top: 1.5rem;
-      padding: 0.75rem;
-      background: #00ff88;
-      color: #0a0e27;
-      font-weight: bold;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      text-align: center;
-    }
-    .form-section {
-      background-color: #0f1332;
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-    .form-section form {
-      max-width: 500px;
-      margin: 0 auto;
-      background: #11173a;
-      padding: 2rem;
-      border-radius: 8px;
-    }
-    .form-section input, .form-section select, .form-section textarea {
-      width: 100%;
-      margin-bottom: 1rem;
-      padding: 0.75rem;
-      border: none;
-      border-radius: 4px;
-    }
-    .form-section button {
-      background: #00ff88;
-      color: #0a0e27;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .footer {
-      text-align: center;
-      font-size: 0.875rem;
-      color: #8892b0;
-      padding: 2rem 1rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>AgentProof – AI Stability Monitoring</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--green:#00ff88;--green-dark:#0c7b45}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#0a0e27;color:#fff;line-height:1.7}
+header{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;position:sticky;top:0;background:#0a0e27;z-index:9}
+header h1{font-size:1.3rem;font-weight:700}
+header nav a{color:var(--green);text-decoration:none;margin-left:1.2rem;font-weight:600}
+.hero{padding:4rem 1.5rem 3rem;text-align:center;background:linear-gradient(180deg,#0a0e27 0%,#11173a 100%)}
+.hero h1{font-size:2.4rem;font-weight:700;margin-bottom:.8rem}
+.hero p{font-size:1.1rem;color:#a8b2d1;max-width:820px;margin:0 auto 1.6rem}
+.checks{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;font-size:.95rem;color:#ccf;margin-bottom:1.5rem}
+.checks span::before{content:"✓ ";color:var(--green)}
+.btn{display:inline-block;background:var(--green);color:#0a0e27;padding:12px 32px;border-radius:6px;font-weight:700;text-decoration:none;cursor:pointer;transition:background .25s,transform .2s}
+.btn:hover{background:var(--green-dark);transform:translateY(-2px)}
+section{padding:4rem 1.5rem;text-align:center}
+h2.section-title{font-size:2rem;margin-bottom:1.7rem;position:relative;display:inline-block}
+h2.section-title::after{content:'';display:block;width:70px;height:3px;background:var(--green);margin:8px auto 0}
+.pricing-wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:2rem}
+.card{background:#11173a;border-radius:10px;padding:2rem 1.5rem;width:310px;display:flex;flex-direction:column;box-shadow:0 8px 28px rgba(0,0,0,.3)}
+.card h3{font-size:1.3rem;margin-bottom:.5rem}
+.price{color:var(--green);font-size:1.15rem;font-weight:700;margin-bottom:1rem}
+.card ul{list-style:none;text-align:left;font-size:.95rem;color:#ccd2e3;margin-bottom:1.4rem;padding-left:0}
+.card li::before{content:"✔ ";color:var(--green)}
+.card .btn{align-self:center;width:100%}
+.extra{background:#0f1332;padding:3rem 1.5rem;margin-top:3rem;border-radius:12px}
+.extra p{color:#a8b2d1;max-width:820px;margin:0 auto 1.2rem}
+#modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);justify-content:center;align-items:center;z-index:99;padding:1rem}
+.modal-box{background:#fff;color:#111;border-radius:10px;max-width:540px;width:100%;padding:2rem 1.5rem;position:relative}
+.modal-box h2{font-size:1.45rem;text-align:center;margin-bottom:1rem}
+.close{position:absolute;top:10px;right:14px;background:none;border:none;font-size:1.4rem;color:#666;cursor:pointer}
+.modal-box input,.modal-box select,.modal-box textarea{width:100%;padding:10px;margin-bottom:1rem;border:1px solid #d1d5db;border-radius:4px;font-size:.98rem}
+.modal-box button[type=submit]{background:var(--green);color:#0a0e27;font-weight:700;border:none;border-radius:6px;padding:12px;width:100%}
+footer{text-align:center;padding:2rem 1rem;border-top:1px solid rgba(255,255,255,.15);color:#8892b0;font-size:.85rem}
+/* mobile */
+@media(max-width:768px){
+  header nav a{margin-left:.8rem;font-size:.9rem}
+  .hero h1{font-size:2rem}
+  .card{width:100%;max-width:360px}
+}
+</style>
 </head>
 <body>
-  <header>
-    <h1>AgentProof</h1>
-    <nav>
-      <a href="#consulting">Consulting</a>
-      <a href="#partner">Partner</a>
-      <a href="#join">Careers</a>
-    </nav>
-  </header>
+<header>
+  <h1>AgentProof</h1>
+  <nav>
+    <a href="#plans">Plans</a><a href="#consulting">Consulting</a><a href="#partner">Partner</a><a href="#join">Careers</a>
+  </nav>
+</header>
 
-  <section class="hero">
-    <h1>Stability is the New Security</h1>
-    <p>AgentProof helps AI teams monitor, certify, and scale with confidence — without the complexity of legacy compliance.</p>
-  </section>
+<section class="hero">
+  <h1>While big companies take months to find the problem,<br>you prevent it in minutes.</h1>
+  <p>Stop AI agent anomalies before they become headlines. Real-time observability and monitoring for autonomous tools.</p>
+  <div class="checks"><span>5-minute setup</span><span>Monitor & Certify Now</span><span>30-day guarantee</span></div>
+  <a href="#plans" class="btn">See Plans</a>
+</section>
 
-  <section class="section">
-    <h2>Monitoring Plans</h2>
-    <div class="pricing-container">
-      <div class="pricing-card">
-        <h3>Stability Scan & Report</h3>
-        <div class="price">$299 one-time</div>
-        <ul>
-          <li>Observability baseline</li>
-          <li>Prompt fragility detection</li>
-          <li>PDF summary & 30-day trends</li>
-        </ul>
-        <button class="cta-button">Get Started</button>
-        <p style="font-size: 12px; color: #666;">By purchasing, you agree to our <a href="https://docs.google.com/document/d/1PLiz34tuu1VbB84edlsGSFKmhCpXMEba4xmqH8Gl9nE/edit?usp=sharing" target="_blank" style="color: #00ff88;">Terms of Service</a></p>
-      </div>
-      <div class="pricing-card">
-        <h3>Monitoring + Certification</h3>
-        <div class="price">$99/mo or $999/year</div>
-        <ul>
-          <li>Rolling 30-day monitoring</li>
-          <li>Certification badge included</li>
-          <li>Behavioral signal tracking</li>
-        </ul>
-        <button class="cta-button">Get Started</button>
-        <p style="font-size: 12px; color: #666;">By purchasing, you agree to our <a href="https://docs.google.com/document/d/1PLiz34tuu1VbB84edlsGSFKmhCpXMEba4xmqH8Gl9nE/edit?usp=sharing" target="_blank" style="color: #00ff88;">Terms of Service</a></p>
-      </div>
-      <div class="pricing-card">
-        <h3>Enterprise Monitoring & Audit</h3>
-        <div class="price">$2999 or $299/mo</div>
-        <ul>
-          <li>24/7 observability</li>
-          <li>Risk scoring & compliance reports</li>
-          <li>Dedicated success partner</li>
-        </ul>
-        <button class="cta-button">Get Started</button>
-        <p style="font-size: 12px; color: #666;">By purchasing, you agree to our <a href="https://docs.google.com/document/d/1PLiz34tuu1VbB84edlsGSFKmhCpXMEba4xmqH8Gl9nE/edit?usp=sharing" target="_blank" style="color: #00ff88;">Terms of Service</a></p>
-      </div>
+<section id="plans">
+  <h2 class="section-title">Monitoring &amp; Certification Plans</h2>
+  <div class="pricing-wrap">
+    <div class="card">
+      <h3>Stability Scan &amp; Report</h3>
+      <div class="price">$299 one-time</div>
+      <ul><li>Observability baseline</li><li>Fragility / error burst detection</li><li>30-day trend projection (PDF)</li></ul>
+      <a class="btn" href="https://buy.stripe.com/sample-link-1">Get Started</a>
     </div>
-  </section>
+    <div class="card">
+      <h3>Monitoring + Certification</h3>
+      <div class="price">$99/mo&nbsp;or&nbsp;$999/yr</div>
+      <ul><li>Rolling 30-day observability</li><li>Certification badge</li><li>Daily tracking (10 agents)</li></ul>
+      <a class="btn" href="https://buy.stripe.com/sample-link-2">Get Started</a>
+    </div>
+    <div class="card">
+      <h3>Enterprise Monitoring&nbsp;&amp;&nbsp;Audit</h3>
+      <div class="price">$2999 or $299/mo</div>
+      <ul><li>24/7 drift alerts</li><li>Risk scoring &amp; SOC2/ISO reports</li><li>Dedicated success partner</li></ul>
+      <a class="btn" href="https://buy.stripe.com/sample-link-3">Get Started</a>
+    </div>
+  </div>
+</section>
 
-  <section class="form-section" id="consulting">
-    <h2>Request Consulting</h2>
-    <form action="https://formspree.io/f/mayrvpqr" method="POST">
-      <input type="text" name="name" placeholder="First and Last Name" required>
-      <input type="text" name="business" placeholder="Business Name">
+<section id="consulting" class="extra">
+  <h2 class="section-title">Enterprise Compliance &amp; Consulting</h2>
+  <p>Our experts deliver SOC 2, ISO frameworks, and custom audit-readiness plans, ensuring your AI systems exceed enterprise standards.</p>
+  <button class="btn" onclick="openForm('Consulting')">Request Consulting</button>
+</section>
+
+<section id="partner" class="extra">
+  <h2 class="section-title">Partner with AgentProof</h2>
+  <p>Get certified and join our network of governance and compliance experts.</p>
+  <button class="btn" onclick="openForm('Partnership')">Join Our Network</button>
+</section>
+
+<section id="join" class="extra" style="margin-bottom:4rem">
+  <h2 class="section-title">Join Our Team</h2>
+  <p>Be part of a pioneering team shaping AI stability, safety, and compliance solutions. Explore open roles or send your resume.</p>
+  <button class="btn" onclick="openForm('Career')">Apply Now</button>
+</section>
+
+<!-- modal -->
+<div id="modal">
+  <div class="modal-box">
+    <button class="close" onclick="closeForm()">&times;</button>
+    <h2 id="formTitle">Contact AgentProof</h2>
+    <form action="https://formspree.io/f/partner@agentproof.dev" method="POST">
+      <input type="text" name="first_name" placeholder="First Name" required>
+      <input type="text" name="last_name" placeholder="Last Name" required>
+      <input type="text" name="business_name" placeholder="Business Name (optional)">
       <input type="email" name="email" placeholder="Email Address" required>
       <input type="tel" name="phone" placeholder="Phone Number">
-      <select name="reason" required>
+      <select name="reason" id="reasonSelect" required>
         <option value="">Reason for Contact</option>
         <option value="Consulting">Consulting</option>
         <option value="Partnership">Partnership</option>
         <option value="Career">Career</option>
       </select>
-      <textarea name="message" rows="4" placeholder="Tell us more..."></textarea>
+      <textarea name="message" rows="4" placeholder="Tell us more…" required></textarea>
       <button type="submit">Submit</button>
     </form>
-  </section>
-
-  <section class="form-section" id="partner">
-    <h2>Partner with AgentProof</h2>
-    <form action="https://formspree.io/f/mayrvpqr" method="POST">
-      <input type="text" name="name" placeholder="First and Last Name" required>
-      <input type="text" name="business" placeholder="Business Name">
-      <input type="email" name="email" placeholder="Email Address" required>
-      <input type="tel" name="phone" placeholder="Phone Number">
-      <select name="reason" required>
-        <option value="">Reason for Contact</option>
-        <option value="Partnership">Partnership</option>
-      </select>
-      <textarea name="message" rows="4" placeholder="Tell us more..."></textarea>
-      <button type="submit">Submit</button>
-    </form>
-  </section>
-
-  <section class="form-section" id="join">
-    <h2>Join Our Team</h2>
-    <form action="https://formspree.io/f/mayrvpqr" method="POST">
-      <input type="text" name="name" placeholder="First and Last Name" required>
-      <input type="email" name="email" placeholder="Email Address" required>
-      <input type="tel" name="phone" placeholder="Phone Number">
-      <textarea name="message" rows="4" placeholder="Link to your resume or tell us why you want to work with us."></textarea>
-      <button type="submit">Submit</button>
-    </form>
-  </section>
-
-  <div class="footer">
-    © 2025 AgentProof. All rights reserved.
   </div>
+</div>
+
+<footer>© 2025 AgentProof. All rights reserved.</footer>
+
+<script>
+function openForm(reason){
+  document.getElementById('modal').style.display='flex';
+  const sel=document.getElementById('reasonSelect');
+  [...sel.options].forEach((o,i)=>{if(o.value===reason)sel.selectedIndex=i});
+  document.getElementById('formTitle').textContent=
+    reason==='Consulting'?'Consulting Request':
+    reason==='Partnership'?'Partnership Request':
+    reason==='Career'?'Join Our Team':'Contact AgentProof';
+  document.body.style.overflow='hidden';
+}
+function closeForm(){
+  document.getElementById('modal').style.display='none';
+  document.body.style.overflow='';
+}
+</script>
 </body>
 </html>
