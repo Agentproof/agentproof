@@ -117,7 +117,8 @@ footer{
 <section style="padding:3.5rem 1.5rem;text-align:center;background:transparent">
   <h2 class="section-title">Inside the AgentProof&nbsp;Engine</h2>
 
-  <div style="
+  <div class="engine-row"
+     style="
       display:flex;
       gap:1rem;
       justify-content:center;
@@ -151,15 +152,18 @@ footer{
 <!-- mobile tweak -->
 <style>
 @media(max-width:768px){
-  [style*="display:flex"][style*="gap:1rem"]{flex-direction:column;align-items:center}
-}
-@media(max-width:768px){
   .engine-row{
-    display:block !important;          /* kills the flex row */
-    max-width:100% !important;
+    display:block !important;      /* stop flex wrapping on small screens */
     margin:0 auto !important;
   }
-
+  .engine-row > div{
+    flex:none !important;          /* override inline flex */
+    width:100% !important;
+    max-width:360px !important;
+    min-width:0 !important;
+    margin:0 auto 1rem !important; /* even vertical spacing */
+  }
+}
   .engine-row > div{
     width:100% !important;             /* full width */
     max-width:360px !important;        /* keeps them tidy */
