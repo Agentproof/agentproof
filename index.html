@@ -165,6 +165,12 @@ footer{
     margin:0 auto 1rem !important; /* even spacing             */
   }
 }
+/* Desktop: keep four cards in one row */
+@media(min-width:769px){
+  .engine-row > div{
+    flex:0 1 220px !important;   /* fixed basis so 4 fit */
+  }
+}
 </style>
 </style><p style="max-width:780px;margin:1rem auto 0;font-size:.9rem;color:#a8b2d1">
   <em>Quiet by design—AgentProof keeps watch in the background so you can keep shipping.</em>
