@@ -89,14 +89,14 @@ h2.section-title::after{
 }
 /* === Price-card alignment (fixed heights) === */
 .card h3{                     
-  min-height:80px;  /* Increased from 60px */
+  min-height:80px;
   display:flex;
-  align-items:center;
+  align-items:flex-start;  /* This aligns to top */
   justify-content:center;
   text-align:center;
   margin-bottom:0.5rem;
   font-size:1.3rem;
-}
+  padding-top:0;  /* Ensures consistent spacing from top */
 }
 .card .price{                 
   min-height:40px;
