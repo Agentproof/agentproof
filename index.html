@@ -200,42 +200,45 @@ nav a::after{
 nav a:hover::after{width:100%;}
 
 /* Hero Section */
-.hero{
-  padding:8rem 2rem 4rem;
-  text-align:center;
-  position:relative;
-  min-height:90vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  background-image:url('assets/heroimage.png');
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  background-attachment:fixed;
+/* Hero Section */
+.hero {
+  /* fill the entire viewport height so nothing peeks through */
+  min-height: 100vh !important;
+  height: auto !important;
+
+  /* center & bleed perfectly to the edges */
+  position: relative !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 100vw !important;
+
+  /* your background settings */
+  padding: 8rem 2rem 4rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('assets/heroimage.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll !important;
 }
 
-.hero::before{
-  content:'';
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-  background:rgba(10, 14, 39, 0.7);
-  z-index:0;
+.hero::before {
+  /* lighter overlay so the image “pops” */
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 14, 39, 0.4) !important;
+  z-index: 0;
 }
 
-.hero > *{
-  position:relative;
-  z-index:1;
-}
-
-@media(max-width:768px){
-  .hero{
-    background-attachment:scroll;
-  }
+.hero > * {
+  /* keep all text/buttons above the overlay */
+  position: relative;
+  z-index: 1;
 }
 
 .hero h1{
