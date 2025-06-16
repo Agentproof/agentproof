@@ -1098,22 +1098,42 @@ footer a{
   /* Fix hub diagram */
   .hub-diagram{
     height:auto;
-    padding:2rem 0;
+    min-height:400px;
+    padding:2rem 1rem;
   }
-  .hub-logo{
-    width:120px;
-    height:120px;
-    font-size:0.9rem;
+  .hub-center{
+    position:relative;
+    margin:2rem auto;
   }
-  .orbit-group.left{
-    left:5px;
+  .orbit-container{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    gap:2rem;
+    margin-top:2rem;
   }
+  .orbit-group{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    gap:1rem;
+  }
+  .orbit-group.left,
   .orbit-group.right{
-    right:5px;
+    position:relative;
+    left:auto;
+    right:auto;
+    transform:none;
+  }
+  .connection-lines{
+    display:none;
   }
   .capabilities-row{
     position:relative;
+    flex-wrap:wrap;
+    gap:1rem;
     margin-top:2rem;
+    padding:1rem;
   }
   
   /* Fix stats */
@@ -1126,24 +1146,23 @@ footer a{
     width:100% !important;
   }
   
-  /* Fix services grid */
-  #services .container > div{
-    grid-template-columns:1fr !important;
+  /* Reduce boxy appearance on mobile */
+  .monitor-card,
+  .comparison-card,
+  .pricing-card{
+    background:rgba(255, 255, 255, 0.03);
+    border:1px solid rgba(255, 255, 255, 0.05);
   }
   
-  /* Fix partner grid */
-  #partners .container > div{
-    grid-template-columns:repeat(2,1fr) !important;
-    gap:0.5rem !important;
-  }
+  /* Remove excessive borders */
+  #services .container > div > div,
   #partners .container > div > div{
-    font-size:0.8rem !important;
-    padding:0.75rem !important;
-  }
-  
-  /* Fix careers grid */
-  #careers .container > div{
-    grid-template-columns:1fr !important;
+    background:transparent !important;
+    border:none !important;
+    border-bottom:1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius:0 !important;
+    padding-left:0 !important;
+    padding-right:0 !important;
   }
 }
 
