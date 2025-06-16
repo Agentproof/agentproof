@@ -1361,6 +1361,28 @@ footer a{
     grid-template-columns: repeat(1, 1fr) !important;
   }
 }
+/* ─── Hero: full-bleed & lighter overlay ─── */
+.hero {
+  position: relative;         /* enable full-bleed hack */
+  left: 50%; right: 50%;      /* center on viewport */
+  margin-left: -50vw;          /* pull out to fill left */
+  margin-right: -50vw;         /* pull out to fill right */
+  width: 100vw;               /* exactly viewport-wide */
+  background-attachment: scroll !important;  /* kill any fixed bleed bugs */
+}
+.hero::before {
+  background: rgba(10, 14, 39, 0.4) !important; /* lighter dark overlay */
+}
+
+/* ─── Mobile: shrink Stability Layer by 40% ─── */
+@media (max-width: 768px) {
+  .hub-diagram {
+    transform: scale(0.6) !important;          /* shrink to 60% */
+    transform-origin: top center !important;   /* anchor at top */
+    height: auto !important;                   /* let it resize */
+    margin: 2rem auto !important;              /* keep it centered */
+  }
+}  
 </style>
 </head>
 <body>
