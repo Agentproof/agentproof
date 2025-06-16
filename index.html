@@ -154,6 +154,23 @@ footer{
 
 /* feature list slot: 3 bullet lines worth */
 .card ul{min-height:108px}
+/* 1️⃣  Title slot – big enough for any two-line heading */
+.card h3{
+  min-height:64px;                       /* ↑ was 48/56 */
+  display:flex;align-items:center;justify-content:center;
+}
+
+/* 2️⃣  Price slot – big enough for any two-line price string */
+.card .price{
+  min-height:48px;                       /* ↑ was 38/44 */
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1rem;
+}
+
+/* 3️⃣  Feature list slot – large enough even when bullets wrap */
+.card ul{
+  min-height:132px;                      /* adjust until all buttons align */
+}
 /* ----- Uniform trust badges ----- */
 .badge-row{
   display:flex;
