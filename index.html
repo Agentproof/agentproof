@@ -52,25 +52,7 @@
 }
 </script>
 <style>
-/* ─── GLOBAL RESET & HERO FULL‐BLEED ─── */
-html, body {
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow-x: hidden !important;
-  width: 100% !important;
-  background: var(--dark) !important;
-}
-.hero {
-  /* full‐screen cover */
-  width: 100vw !important;
-  position: relative !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  min-height: 100vh !important;
-  background: url('assets/heroimage.png') center/cover no-repeat !important;
-  background-attachment: scroll !important;
-  overflow: hidden !important;
-}
+
 .hero::before {
   background: rgba(10,14,39,0.4) !important;
 }
@@ -224,43 +206,49 @@ nav a:hover::after{width:100%;}
 /* Hero Section */
 /* Hero Section */
 .hero {
-  /* fill the entire viewport height so nothing peeks through */
-  min-height: 100vh !important;
-  height: auto !important;
-
-  /* center & bleed perfectly to the edges */
-  position: relative !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  width: 100vw !important;
-
-  /* your background settings */
+  /* your original padding/centering */
   padding: 8rem 2rem 4rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  /* full-bleed hack */
+  position: relative !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 100vw !important;
+
+  /* full-height so next section never peeks through */
+  min-height: 100vh !important;
+
+  /* background image + overlay */
   background-image: url('assets/heroimage.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: scroll !important;
+  background-attachment: fixed;
+  overflow: hidden;
 }
 
 .hero::before {
-  /* lighter overlay so the image “pops” */
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(10, 14, 39, 0.4) !important;
+  background: rgba(10, 14, 39, 0.7);
   z-index: 0;
 }
 
 .hero > * {
-  /* keep all text/buttons above the overlay */
   position: relative;
   z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    background-attachment: scroll;
+  }
 }
 
 .hero h1{
