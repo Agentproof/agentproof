@@ -129,7 +129,7 @@ body{
     linear-gradient(90deg,rgba(255,255,255,0.01) 1px,transparent 1px);
   background-size:50px 50px;
   background-position:-1px -1px;
-  display:none; /* Hide on mobile */
+  display:none;
 }
 
 @media(min-width:769px){
@@ -200,6 +200,10 @@ nav a:hover::after{width:100%;}
   flex-direction:column;
   justify-content:center;
   align-items:center;
+  background-image:url('assets/heroimage.png');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
 }
 
 .hero h1{
@@ -654,32 +658,6 @@ nav a:hover::after{width:100%;}
   font-size:1.2rem;
 }
 
-/* Mobile responsiveness */
-@media(max-width:768px){
-  .hub-diagram{
-    height:600px;
-  }
-  .hub-logo{
-    width:140px;
-    height:140px;
-  }
-  .orbit-group.left{
-    left:10px;
-  }
-  .orbit-group.right{
-    right:10px;
-  }
-  .orbit-box{
-    font-size:0.8rem;
-    padding:10px 16px;
-  }
-  .capabilities-row{
-    flex-wrap:wrap;
-    gap:1rem;
-    padding:0.75rem 1rem;
-  }
-}
-
 /* Conversion urgency */
 .flow-cta{
   text-align:center;
@@ -935,7 +913,13 @@ nav a:hover::after{width:100%;}
   background:rgba(255, 255, 255, 0.02);
 }
 
-
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:2rem;
+  max-width:1000px;
+  margin:0 auto;
+}
 
 .stat-card{
   text-align:center;
@@ -1102,75 +1086,85 @@ footer a{
   .pricing-card{width:100%;max-width:400px;}
   .monitor-grid{grid-template-columns:1fr;}
   
-@media(max-width:768px){
-  /* Prevent horizontal scroll */
-  body{
-    overflow-x:hidden !important;
+  /* Force stats grid */
+  .stats-grid{
+    grid-template-columns:repeat(2,1fr) !important;
+    gap:1rem !important;
   }
   
-  /* Fix header */
-  header{
-    padding:0.75rem;
-    width:100%;
-  }
-  .logo{
-    font-size:1.1rem;
-  }
-  nav{
-    display:flex;
-    gap:0.25rem;
-    flex-wrap:wrap;
-    justify-content:center;
-    width:100%;
-  }
-  nav a{
-    font-size:0.65rem;
-    padding:0.2rem;
-  }
-  
-  /* Fix hub diagram */
+  /* Completely different mobile layout for hub */
   .hub-diagram{
-    transform:scale(0.6);
-    margin:-80px auto;
+    height:auto;
+    min-height:auto;
+    padding:1rem;
+  }
+  
+  .hub-center{
+    position:relative;
+    margin:1rem auto;
+    transform:none;
+    top:auto;
+    left:auto;
+  }
+  
+  .hub-logo{
+    width:100px;
+    height:100px;
+    font-size:0.8rem;
+  }
+  
+  .orbit-container{
+    position:relative;
+    display:block;
+    margin-top:2rem;
+    padding:0;
+  }
+  
+  .orbit-group{
+    position:relative;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0.5rem;
+    margin-bottom:1.5rem;
+    top:auto !important;
+    left:auto !important;
+    right:auto !important;
+    transform:none !important;
+  }
+  
+  .orbit-item{
+    margin:0;
+    opacity:1 !important;
+    animation:none !important;
+  }
+  
+  .orbit-box{
+    margin:0 auto;
+    max-width:280px;
     width:100%;
-    overflow:hidden;
   }
   
-  /* Fix stats - MUST be visible */
-  .stats-horizontal{
-    display:grid !important;
-    grid-template-columns:1fr 1fr !important;
-    gap:0.5rem !important;
-    width:100% !important;
-    padding:0 1rem !important;
-    box-sizing:border-box !important;
-  }
-  .stats-horizontal .stat-card{
-    width:100% !important;
-    padding:1rem 0.5rem !important;
-  }
-  .stat-number{
-    font-size:1.8rem !important;
-  }
-  .stat-label{
-    font-size:0.8rem !important;
+  .connection-lines{
+    display:none;
   }
   
-  /* Fix all containers */
-  .container,
-  section{
-    max-width:100vw !important;
-    overflow-x:hidden !important;
+  .capabilities-row{
+    position:relative;
+    margin-top:1rem;
+    grid-template-columns:repeat(2,1fr);
+    display:grid;
+    gap:0.5rem;
+    padding:0.5rem;
   }
   
-  /* Other fixes */
-  .hero h1{
-    font-size:1.8rem;
-    padding:0 0.5rem;
+  .capability-item{
+    flex-direction:column;
+    font-size:0.8rem;
   }
-  .pricing-card{width:90%;}
-  .monitor-grid{grid-template-columns:1fr;}
-}
+  
+  .capability-icon{
+    font-size:1rem;
+  }
   
   /* Fix stats */
   .stats-horizontal{
@@ -1182,75 +1176,106 @@ footer a{
     width:100% !important;
   }
   
-/* Trust Signals - make them glass style */
-section[style*="padding:2rem;background:rgba(255,255,255,0.02)"] > div > div{
-  background:transparent !important;
-}
-
-section[style*="padding:2rem;background:rgba(255,255,255,0.02)"] > div > div > div{
-  background:rgba(255, 255, 255, 0.03);
-  backdrop-filter:blur(10px);
-  border:1px solid rgba(255, 255, 255, 0.05);
-  border-radius:12px;
-  padding:1rem;
-  transition:all 0.3s;
-}
-
-section[style*="padding:2rem;background:rgba(255,255,255,0.02)"] > div > div > div:hover{
-  transform:translateY(-2px);
-  border-color:rgba(59, 130, 246, 0.3);
-}
+  /* Reduce boxy appearance on mobile */
+  .monitor-card,
+  .comparison-card,
+  .pricing-card{
+    background:rgba(255, 255, 255, 0.03);
+    border:1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  /* Remove excessive borders */
+  #services .container > div > div,
+  #partners .container > div > div{
+    background:transparent !important;
+    border:none !important;
+    border-bottom:1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius:0 !important;
+    padding-left:0 !important;
+    padding-right:0 !important;
+  }
+  
+  /* Consistent section spacing */
+  section{
+    padding:4rem 1.5rem !important;
+  }
 }
 
 @media(max-width:500px){
-  /* Fix stats to show all 4 */
-  .stats-horizontal{
-    display:grid !important;
-    grid-template-columns:1fr 1fr !important;
-    flex-wrap:wrap !important;
-  }
-  .stat-card{
-    min-width:0 !important;
-    padding:0.5rem !important;
-  }
-  .stat-number{
-    font-size:1.5rem !important;
-  }
-  .stat-label{
-    font-size:0.7rem !important;
-  }
-  
-  /* Smaller trust badges */
-  section[style*="padding:2rem"] > div > div{
-    gap:0.5rem !important;
-  }
-  section[style*="padding:2rem"] > div > div > div{
-    transform:scale(0.8);
-  }
-  
-  /* Fix cut-off sections */
-  #services .container,
-  #partners .container,
-  #careers .container{
-    padding:0 0.5rem !important;
-  }
-  #services h2,
-  #partners h2,
-  #careers h2{
-    font-size:1.5rem !important;
-  }
-  
-  /* Other mobile fixes */
   header{
-    padding:0.75rem 0.5rem;
+    padding:1rem;
+    flex-wrap:nowrap;
+    overflow-x:hidden;
   }
-  .hero{
-    padding:3rem 0.5rem 0.5rem;
+  .logo{font-size:1.3rem;}
+  nav{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    gap:0.5rem;
+    flex-wrap:nowrap;
+    font-size:0.7rem;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
   }
+  nav::-webkit-scrollbar{display:none;}
+  nav a{
+    font-size:0.75rem;
+    margin:0;
+    padding:0.25rem 0.5rem;
+    white-space:nowrap;
+  }
+  .hero{padding:5rem 1rem 2rem;}
   .hero h1{
-    font-size:1.5rem;
+    font-size:1.75rem;
+    line-height:1.3;
   }
-  .section-title{font-size:1.5rem;}
+  .hero .subtitle{
+    font-size:1rem;
+  }
+  .section-title{font-size:1.75rem;}
+  .trust-strip{
+    gap:0.5rem;
+    font-size:0.75rem;
+  }
+  .trust-item{font-size:0.75rem;}
+  
+  /* Force stats grid on mobile */
+  .stats-grid{
+    grid-template-columns:repeat(2,1fr) !important;
+    gap:0.75rem !important;
+    padding:0 0.5rem;
+  }
+  
+  .stat-card{
+    padding:1.5rem 0.5rem;
+  }
+  
+  .stat-number{font-size:2rem;}
+  .stat-label{font-size:0.9rem;}
+  
+  /* Reduce padding on sections */
+  section{
+    padding:2rem 1rem !important;
+  }
+  
+  /* Fix enterprise sections */
+  .container h2{
+    font-size:1.75rem !important;
+  }
+  .container > p{
+    font-size:1rem !important;
+  }
+  
+  /* Hub diagram mobile */
+  .orbit-item{
+    margin:10px 0;
+  }
+  .orbit-box{
+    font-size:0.75rem !important;
+    padding:8px 12px !important;
+  }
 }
 </style>
 </head>
@@ -1293,6 +1318,39 @@ section[style*="padding:2rem;background:rgba(255,255,255,0.02)"] > div > div > d
 
 <!-- Problem/Solution -->
 <section class="comparison-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">The AI Security Gap</h2>
+      <p class="section-subtitle">Most teams discover AI issues when it's too late. We help you prevent them.</p>
+    </div>
+    
+    <div class="comparison-grid">
+      <div class="comparison-card without">
+        <h3 style="color:#ef4444;">Without AgentProof</h3>
+        <ul class="comparison-list">
+          <li>Blind to agent behaviors until something breaks</li>
+          <li>No visibility into token usage or cost overruns</li>
+          <li>Security vulnerabilities discovered by hackers first</li>
+          <li>Compliance audits reveal undocumented AI risks</li>
+          <li>Insurance claims denied due to lack of monitoring</li>
+        </ul>
+      </div>
+      
+      <div class="comparison-card with">
+        <h3 style="color:var(--green);">With AgentProof</h3>
+        <ul class="comparison-list">
+          <li>Real-time behavioral fingerprinting catches anomalies</li>
+          <li>Token optimization saves 30-50% on AI costs</li>
+          <li>Proactive vulnerability detection before exploitation</li>
+          <li>Automated compliance documentation and audit trails</li>
+          <li>Insurance-ready with continuous monitoring proof</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Complete Agent Observability -->
 <section id="monitor" class="monitor-section">
   <div class="container">
     <div class="section-header">
@@ -1341,7 +1399,7 @@ section[style*="padding:2rem;background:rgba(255,255,255,0.02)"] > div > div > d
 </section>
 
 <!-- What We Monitor -->
-<section id="monitor" class="monitor-section">
+<section id="hub-platform" class="monitor-section">
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">The Stability Layer for AI Operations</h2>
@@ -1442,25 +1500,25 @@ section[style*="padding:2rem;background:rgba(255,255,255,0.02)"] > div > div > d
 <section class="stats-section">
   <div class="container">
     <div class="section-header">
-      <h2 class="section-title">Celebrating 1,000+ AI Agent Assessments</h2>
-      <p class="section-subtitle">Join the leaders who discovered critical vulnerabilities before they became incidents</p>
+      <h2 class="section-title">Post-EchoLeaks: Why Teams Monitor Now</h2>
+      <p class="section-subtitle">Our emergency analysis of AI repositories revealed critical vulnerabilities hiding in plain sight</p>
     </div>
-    <div class="stats-grid stats-horizontal" style="display:flex !important; flex-direction:row !important; justify-content:space-between !important; flex-wrap:nowrap !important;">
-      <div class="stat-card" style="flex:1 !important; text-align:center !important;">
-        <div class="stat-number">1,000+</div>
+    <div class="stats-grid stats-horizontal">
+      <div class="stat-card">
+        <div class="stat-number">1000+</div>
         <div class="stat-label">Assessments Completed</div>
       </div>
-      <div class="stat-card" style="flex:1 !important; text-align:center !important;">
-        <div class="stat-number">33%</div>
-        <div class="stat-label">Found Vulnerabilities</div>
+      <div class="stat-card">
+        <div class="stat-number">61%</div>
+        <div class="stat-label">JavaScript Agents at Risk</div>
       </div>
-      <div class="stat-card" style="flex:1 !important; text-align:center !important;">
-        <div class="stat-number">$8.4K</div>
-        <div class="stat-label">Avg Monthly Savings</div>
+      <div class="stat-card">
+        <div class="stat-number">98.4%</div>
+        <div class="stat-label">Prediction Accuracy</div>
       </div>
-      <div class="stat-card" style="flex:1 !important; text-align:center !important;">
-        <div class="stat-number">2hrs</div>
-        <div class="stat-label">To Full Protection</div>
+      <div class="stat-card">
+        <div class="stat-number">$299</div>
+        <div class="stat-label">Start Protection Today</div>
       </div>
     </div>
   </div>
@@ -1509,7 +1567,7 @@ section[style*="padding:2rem;background:rgba(255,255,255,0.02)"] > div > div > d
           <li>Actionable fix recommendations</li>
         </ul>
         <div class="cta-wrap">
-          <a class="btn btn-primary" href="https://buy.stripe.com/00w4gA2p54dm1LU3kp0gw00">Start Scan</a>
+          <a class="btn btn-primary" href="https://buy.stripe.com/00g4gA2p54dm1LU3cc">Start Scan</a>
           <a href="assets/sample-report.html" class="sample-link" target="_blank">View sample report →</a>
         </div>
       </div>
@@ -1527,7 +1585,7 @@ section[style*="padding:2rem;background:rgba(255,255,255,0.02)"] > div > div > d
           <li>Track up to 10 agents</li>
         </ul>
         <div class="cta-wrap">
-          <a class="btn btn-primary" href="https://buy.stripe.com/14A00k5BhcJSaiq4ot0gw01">Get Started</a>
+          <a class="btn btn-primary" href="https://buy.stripe.com/14k00k5BhcJSaiq4gg">Get Started</a>
           <a class="sample-link sample-link-placeholder">&nbsp;</a>
         </div>
       </div>
@@ -1545,7 +1603,7 @@ section[style*="padding:2rem;background:rgba(255,255,255,0.02)"] > div > div > d
           <li>Dedicated success partner</li>
         </ul>
         <div class="cta-wrap">
-          <a class="btn btn-primary" href="https://buy.stripe.com/3cI4gAgfVaBKduC7AF0gw02">Get Started</a>
+          <a class="btn btn-primary" href="https://buy.stripe.com/3cs4gAgfVaBKduC7ss">Get Started</a>
           <a class="sample-link sample-link-placeholder">&nbsp;</a>
         </div>
       </div>
@@ -1637,7 +1695,7 @@ section[style*="padding:2rem;background:rgba(255,255,255,0.02)"] > div > div > d
   <div class="modal-box">
     <button class="close" onclick="closeForm()">&times;</button>
     <h2 id="formTitle">Contact AgentProof</h2>
-    <form action="https://formspree.io/f/partner@agentproof.dev" method="POST">
+    <form id="contactForm" method="POST">
       <input type="text" name="first_name" placeholder="First Name" required>
       <input type="text" name="last_name" placeholder="Last Name" required>
       <input type="text" name="business_name" placeholder="Business Name (optional)">
@@ -1655,18 +1713,6 @@ section[style*="padding:2rem;background:rgba(255,255,255,0.02)"] > div > div > d
   </div>
 </div>
 
-<!-- Exit Intent Modal -->
-<div id="exitModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:9999;justify-content:center;align-items:center;">
-  <div style="background:var(--dark-light);border:2px solid var(--green);border-radius:16px;padding:3rem;max-width:500px;margin:1rem;text-align:center;position:relative;">
-    <button onclick="document.getElementById('exitModal').style.display='none'" style="position:absolute;top:15px;right:15px;background:none;border:none;color:var(--text-secondary);font-size:1.5rem;cursor:pointer;">×</button>
-    <h2 style="font-size:2rem;margin-bottom:1rem;color:var(--text-primary);">Wait! Don't Leave Empty-Handed</h2>
-    <p style="color:var(--text-secondary);margin-bottom:1.5rem;font-size:1.1rem;">Get 10% off your first security assessment</p>
-    <p style="color:var(--green);font-size:1.5rem;margin-bottom:1.5rem;font-weight:600;">Use code: AvoidEcho10</p>
-    <a href="#pricing" class="btn btn-primary" onclick="document.getElementById('exitModal').style.display='none'">Claim Discount</a>
-    <p style="color:var(--text-muted);margin-top:1rem;font-size:0.9rem;">Over 1,000 AI agents analyzed and counting</p>
-  </div>
-</div>
-
 <footer>
   <div style="display:flex;justify-content:center;gap:3rem;margin-bottom:1.5rem;flex-wrap:wrap;">
     <span style="color:var(--text-secondary);font-size:0.85rem;">🔒 256-bit SSL Encryption</span>
@@ -1675,9 +1721,9 @@ section[style*="padding:2rem;background:rgba(255,255,255,0.02)"] > div > div > d
     <span style="color:var(--text-secondary);font-size:0.85rem;">✓ SOC2 Ready</span>
   </div>
   <p>© 2025 AgentProof. All rights reserved. 
-    <a href="/terms.html">Terms</a> · 
-    <a href="/privacy.html">Privacy</a> · 
-    <a href="/security.html">Security</a>
+    <a href="/terms">Terms</a> · 
+    <a href="/privacy">Privacy</a> · 
+    <a href="/security">Security</a>
   </p>
 </footer>
 
@@ -1711,6 +1757,15 @@ function closeForm() {
   document.body.style.overflow = '';
 }
 
+// Form submission handler
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  // For now, just show success and close
+  alert('Thank you for your inquiry! We\'ll be in touch within 24 hours.');
+  closeForm();
+  this.reset();
+});
+
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
@@ -1725,34 +1780,48 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Exit intent detection with localStorage safety check
-let exitIntentShown = false;
-
-// Check localStorage safely (no console logging)
-try {
-  const lastShown = localStorage.getItem('exitIntentShown');
-  if (lastShown && (Date.now() - lastShown) < 7 * 24 * 60 * 60 * 1000) {
-    exitIntentShown = true;
-  }
-} catch (e) {
-  // Fail silently - localStorage not available in sandboxed environments
-}
-
-document.addEventListener('mouseout', function(e) {
-  if (!exitIntentShown && e.clientY <= 0 && e.relatedTarget == null) {
-    // Only show on desktop and if not already shown
-    if (window.innerWidth > 768) {
-      document.getElementById('exitModal').style.display = 'flex';
-      exitIntentShown = true;
-      // Try to save to localStorage if available
-      try {
-        localStorage.setItem('exitIntentShown', Date.now());
-      } catch (e) {
-        // Fail silently in sandboxed environments
-      }
-    }
+// Close modal on outside click
+document.getElementById('modal').addEventListener('click', function(e) {
+  if (e.target === this) {
+    closeForm();
   }
 });
+
+// Exit intent popup
+let exitIntentShown = false;
+
+document.addEventListener('mouseout', function(e) {
+  if (!exitIntentShown && e.clientY <= 0 && e.relatedTarget == null && window.innerWidth > 768) {
+    showExitModal();
+  }
+});
+
+function showExitModal() {
+  exitIntentShown = true;
+  const exitModal = document.createElement('div');
+  exitModal.id = 'exitModal';
+  exitModal.style.cssText = 'display:flex;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:9999;justify-content:center;align-items:center;padding:1rem;';
+  
+  exitModal.innerHTML = `
+    <div style="background:var(--dark-light);border:2px solid var(--green);border-radius:16px;padding:3rem;max-width:500px;width:100%;text-align:center;position:relative;">
+      <button onclick="document.getElementById('exitModal').remove()" style="position:absolute;top:15px;right:15px;background:none;border:none;color:var(--text-secondary);font-size:1.5rem;cursor:pointer;">×</button>
+      <h2 style="font-size:2rem;margin-bottom:1rem;color:var(--text-primary);">Wait! Don't Leave Empty-Handed</h2>
+      <p style="color:var(--text-secondary);margin-bottom:1.5rem;font-size:1.1rem;">Get 10% off your first security assessment</p>
+      <p style="color:var(--green);font-size:1.5rem;margin-bottom:1.5rem;font-weight:600;">Use code: AvoidEcho10</p>
+      <a href="#pricing" class="btn btn-primary" onclick="document.getElementById('exitModal').remove()" style="display:inline-block;padding:16px 40px;background:var(--green);color:white;text-decoration:none;border-radius:50px;font-weight:500;">Claim Discount</a>
+      <p style="color:var(--text-muted);margin-top:1rem;font-size:0.9rem;">Over 1,000 AI agents analyzed and counting</p>
+    </div>
+  `;
+  
+  document.body.appendChild(exitModal);
+  
+  // Close on outside click
+  exitModal.addEventListener('click', function(e) {
+    if (e.target === this) {
+      this.remove();
+    }
+  });
+}
 </script>
 </body>
 </html>
