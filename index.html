@@ -50,6 +50,18 @@ h2.section-title::after{
   display:flex;flex-direction:column;box-shadow:0 10px 32px rgba(0,0,0,.35);
   transition:transform .3s
 }
+/* === Price-card alignment (single source of truth) === */
+.card h3{                     /* title slot – up to 2 lines */
+  min-height:64px;
+  display:flex;align-items:center;justify-content:center;
+}
+
+.card .price{                 /* price slot – up to 2 lines */
+  min-height:50px;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1rem;
+}
+.card ul{min-height:152px;}   /* feature list slot – 3-4 bullets */
 .card:hover{transform:translateY(-6px)}
 .card h3{font-size:1.3rem;margin-bottom:.6rem}
 .price{color:var(--green);font-size:1.15rem;font-weight:700;margin-bottom:1rem}
@@ -140,17 +152,6 @@ footer{
   text-align:center;
   color:var(--green);
   text-decoration:underline;
-}
-/* Keep pricing titles & prices aligned across cards */
-.card h3{
-  min-height:48px;          /* reserve ≈ two text lines */
-  display:flex;align-items:center;justify-content:center;
-}
-
-.card .price{
-  min-height:38px;          /* reserve one line of price text */
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:1rem;       /* same gap above bullet list    */
 }
 /* ----- Uniform trust badges ----- */
 .badge-row{
