@@ -1236,21 +1236,55 @@ footer a{
   }
   
   /* Simple mobile hub layout */
-  @media(max-width:768px){
-    .hub-diagram{
-      transform:none !important;
-      margin-bottom:0 !important;
-      height:auto !important;
-    }
-    
-    .connection-lines{
-      display:none !important;
-    }
-    
-    .orbit-box.provider{
-      text-align:center !important;
-    }
-  }
+ /* ——— Mobile Stability-Layer fixes ——— */
+.monitor-section > div[style*="overflow:hidden"] {
+  overflow: visible !important;
+}
+.hub-diagram {
+  transform: none !important;
+  margin-bottom: 0 !important;
+  height: auto !important;
+  padding: 1rem !important;
+}
+.connection-lines {
+  display: none !important;
+}
+.orbit-container {
+  display: block !important;
+  position: relative !important;
+  padding: 0 !important;
+}
+.orbit-group {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 0.5rem !important;
+  margin-bottom: 1rem !important;
+  transform: none !important;
+  top: auto !important; left: auto !important; right: auto !important;
+}
+.orbit-item {
+  margin: 0 !important;
+  opacity: 1 !important;
+  animation: none !important;
+}
+.orbit-box {
+  max-width: 280px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+.capabilities-row {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 0.5rem !important;
+  padding: 0.5rem !important;
+}
+.capability-item {
+  flex-direction: column !important;
+  font-size: 0.8rem !important;
+}
+.capability-icon {
+  font-size: 1rem !important;
+}
   
   .comparison-grid{grid-template-columns:1fr;gap:2rem;}
   .flow-diagram{gap:1rem;}
