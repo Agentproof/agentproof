@@ -67,12 +67,15 @@
 }
 
 *{box-sizing:border-box;margin:0;padding:0;}
+html{overflow-x:hidden;}
 body{
   font-family:'Inter',sans-serif;
   background:var(--dark);
   color:var(--text-primary);
   line-height:1.7;
   overflow-x:hidden;
+  width:100%;
+  position:relative;
 }
 
 /* Animated background */
@@ -81,6 +84,8 @@ body{
   inset:0;
   z-index:-2;
   background:linear-gradient(180deg,#0a0e27 0%,#11173a 100%);
+  overflow:hidden;
+  max-width:100vw;
 }
 
 .gradient-orb{
@@ -89,6 +94,7 @@ body{
   filter:blur(80px);
   opacity:0.4;
   animation:float 20s infinite ease-in-out;
+  pointer-events:none;
 }
 
 .orb1{
@@ -153,6 +159,9 @@ header{
   backdrop-filter:blur(10px);
   -webkit-backdrop-filter:blur(10px);
   transition:all 0.3s;
+  width:100%;
+  max-width:100vw;
+  overflow:hidden;
 }
 
 header.scrolled{
@@ -204,6 +213,29 @@ nav a:hover::after{width:100%;}
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
+  background-attachment:fixed;
+}
+
+.hero::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background:rgba(10, 14, 39, 0.7);
+  z-index:0;
+}
+
+.hero > *{
+  position:relative;
+  z-index:1;
+}
+
+@media(max-width:768px){
+  .hero{
+    background-attachment:scroll;
+  }
 }
 
 .hero h1{
@@ -218,13 +250,21 @@ nav a:hover::after{width:100%;}
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   animation:fadeInUp 1s ease-out;
-  white-space:nowrap;
+}
+
+@media(min-width:1201px){
+  .hero h1{
+    white-space:nowrap;
+  }
 }
 
 @media(max-width:1200px){
   .hero h1{
     font-size:2.5rem;
     white-space:normal;
+  }
+  .hero h1 br{
+    display:none;
   }
 }
 
@@ -336,15 +376,27 @@ nav a:hover::after{width:100%;}
   font-weight:bold;
 }
 
+/* Section base styles */
+section{
+  width:100%;
+  max-width:100vw;
+  overflow-x:hidden;
+}
+
 /* What We Monitor Section */
 .monitor-section{
   padding:6rem 2rem;
   background:linear-gradient(180deg,transparent 0%,rgba(99, 102, 241, 0.05) 100%);
+  width:100%;
+  max-width:100vw;
+  overflow-x:hidden;
 }
 
 .container{
   max-width:1200px;
   margin:0 auto;
+  width:100%;
+  padding:0 1rem;
 }
 
 .section-header{
@@ -513,6 +565,7 @@ nav a:hover::after{width:100%;}
   max-width:800px;
   height:500px;
   margin:3rem auto;
+  overflow:hidden;
 }
 
 .hub-center{
@@ -714,9 +767,18 @@ nav a:hover::after{width:100%;}
   50%{opacity:1;transform:scale(1.2);}
 }
 
+/* Stats Section */
+.stats-section{
+  padding:4rem 2rem;
+  background:rgba(255, 255, 255, 0.02);
+}
+
 /* Problem/Solution Section */
 .comparison-section{
   padding:6rem 2rem;
+  width:100%;
+  max-width:100vw;
+  overflow-x:hidden;
 }
 
 .comparison-grid{
@@ -773,8 +835,6 @@ nav a:hover::after{width:100%;}
   font-weight:bold;
   font-size:1.2rem;
 }
-
-/* Pricing Section */
 .pricing-section{
   padding:6rem 2rem;
   background:linear-gradient(180deg,rgba(99, 102, 241, 0.05) 0%,transparent 100%);
@@ -805,6 +865,7 @@ nav a:hover::after{width:100%;}
   .pricing-wrap{
     grid-template-columns:1fr;
     max-width:400px;
+    margin:3rem auto;
   }
 }
 
@@ -944,6 +1005,9 @@ nav a:hover::after{width:100%;}
 .cta-section{
   padding:6rem 2rem;
   text-align:center;
+  width:100%;
+  max-width:100vw;
+  overflow-x:hidden;
 }
 
 .cta-content{
@@ -1065,15 +1129,25 @@ footer a{
 
 /* Responsive */
 @media(max-width:768px){
+  /* Hide gradient orbs on mobile to prevent overflow */
+  .gradient-orb{
+    display:none;
+  }
+  
+  .hero{
+    background-attachment:scroll;
+  }
+  
   .hero h1{
     font-size:2rem;
     white-space:normal;
     line-height:1.3;
   }
+  .hero h1 br{
+    display:none;
+  }
   .hero::before{
-    opacity:0.05;
-    transform:none;
-    animation:none;
+    opacity:0.85;
   }
   .comparison-grid{grid-template-columns:1fr;gap:2rem;}
   .flow-diagram{gap:1rem;}
@@ -1083,7 +1157,8 @@ footer a{
     flex-wrap:wrap;
   }
   nav a{font-size:0.85rem;}
-  .pricing-card{width:100%;max-width:400px;}
+  .pricing-wrap{grid-template-columns:1fr;}
+  .pricing-card{width:100%;max-width:400px;margin:0 auto;}
   .monitor-grid{grid-template-columns:1fr;}
   
   /* Force stats grid */
@@ -1097,6 +1172,9 @@ footer a{
     height:auto;
     min-height:auto;
     padding:1rem;
+    transform:scale(0.7);
+    transform-origin:center top;
+    margin-bottom:-100px;
   }
   
   .hub-center{
@@ -1205,19 +1283,18 @@ footer a{
   header{
     padding:1rem;
     flex-wrap:nowrap;
-    overflow-x:hidden;
+    overflow:hidden;
+    width:100%;
   }
   .logo{font-size:1.3rem;}
   nav{
-    width:100%;
     display:flex;
-    justify-content:space-between;
     gap:0.5rem;
     flex-wrap:nowrap;
-    font-size:0.7rem;
     overflow-x:auto;
     -webkit-overflow-scrolling:touch;
     scrollbar-width:none;
+    max-width:60%;
   }
   nav::-webkit-scrollbar{display:none;}
   nav a{
@@ -1268,13 +1345,33 @@ footer a{
     font-size:1rem !important;
   }
   
-  /* Hub diagram mobile */
+  /* Hub diagram mobile - scale to 65% */
+  .hub-diagram{
+    transform:scale(0.65) !important;
+    margin-bottom:-120px !important;
+  }
+  
   .orbit-item{
     margin:10px 0;
   }
   .orbit-box{
     font-size:0.75rem !important;
     padding:8px 12px !important;
+  }
+  
+  /* Fix service grid on mobile */
+  #services div[style*="grid-template-columns:repeat(4,1fr)"] {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+  
+  /* Fix partner grid on mobile */
+  #partners div[style*="grid-template-columns:repeat(6,1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  /* Fix careers grid on mobile */
+  #careers div[style*="grid-template-columns:repeat(3,1fr)"] {
+    grid-template-columns: repeat(1, 1fr) !important;
   }
 }
 </style>
@@ -1316,35 +1413,29 @@ footer a{
   </div>
 </section>
 
-<!-- Problem/Solution -->
-<section class="comparison-section">
+<!-- Stats Section - Post-EchoLeaks -->
+<section class="stats-section">
   <div class="container">
     <div class="section-header">
-      <h2 class="section-title">The AI Security Gap</h2>
-      <p class="section-subtitle">Most teams discover AI issues when it's too late. We help you prevent them.</p>
+      <h2 class="section-title">Post-EchoLeaks: Why Teams Monitor Now</h2>
+      <p class="section-subtitle">Our emergency analysis of AI repositories revealed critical vulnerabilities hiding in plain sight</p>
     </div>
-    
-    <div class="comparison-grid">
-      <div class="comparison-card without">
-        <h3 style="color:#ef4444;">Without AgentProof</h3>
-        <ul class="comparison-list">
-          <li>Blind to agent behaviors until something breaks</li>
-          <li>No visibility into token usage or cost overruns</li>
-          <li>Security vulnerabilities discovered by hackers first</li>
-          <li>Compliance audits reveal undocumented AI risks</li>
-          <li>Insurance claims denied due to lack of monitoring</li>
-        </ul>
+    <div class="stats-grid stats-horizontal">
+      <div class="stat-card">
+        <div class="stat-number">1000+</div>
+        <div class="stat-label">Assessments Completed</div>
       </div>
-      
-      <div class="comparison-card with">
-        <h3 style="color:var(--green);">With AgentProof</h3>
-        <ul class="comparison-list">
-          <li>Real-time behavioral fingerprinting catches anomalies</li>
-          <li>Token optimization saves 30-50% on AI costs</li>
-          <li>Proactive vulnerability detection before exploitation</li>
-          <li>Automated compliance documentation and audit trails</li>
-          <li>Insurance-ready with continuous monitoring proof</li>
-        </ul>
+      <div class="stat-card">
+        <div class="stat-number">61%</div>
+        <div class="stat-label">JavaScript Agents at Risk</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">98.4%</div>
+        <div class="stat-label">Prediction Accuracy</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">$299</div>
+        <div class="stat-label">Start Protection Today</div>
       </div>
     </div>
   </div>
@@ -1407,7 +1498,8 @@ footer a{
     </div>
     
     <!-- Visual Hub Diagram -->
-    <div class="hub-diagram">
+    <div style="overflow:hidden;width:100%;">
+      <div class="hub-diagram">
       <!-- Center Hub -->
       <div class="hub-center">
         <div class="hub-logo">
@@ -1487,39 +1579,12 @@ footer a{
           <span>Compliance</span>
         </div>
       </div>
+      </div>
     </div>
     
     <div class="flow-cta">
       <p class="flow-value">See how your AI ecosystem connects</p>
       <a href="#pricing" class="btn btn-primary">Start Analysis</a>
-    </div>
-  </div>
-</section>
-
-<!-- Stats -->
-<section class="stats-section">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Post-EchoLeaks: Why Teams Monitor Now</h2>
-      <p class="section-subtitle">Our emergency analysis of AI repositories revealed critical vulnerabilities hiding in plain sight</p>
-    </div>
-    <div class="stats-grid stats-horizontal">
-      <div class="stat-card">
-        <div class="stat-number">1000+</div>
-        <div class="stat-label">Assessments Completed</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">61%</div>
-        <div class="stat-label">JavaScript Agents at Risk</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">98.4%</div>
-        <div class="stat-label">Prediction Accuracy</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">$299</div>
-        <div class="stat-label">Start Protection Today</div>
-      </div>
     </div>
   </div>
 </section>
@@ -1611,9 +1676,43 @@ footer a{
   </div>
 </section>
 
+<!-- Problem/Solution Comparison (Optional) -->
+<section class="comparison-section" style="background:rgba(255,255,255,0.02);">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">The AI Security Gap</h2>
+      <p class="section-subtitle">Most teams discover AI issues when it's too late. We help you prevent them.</p>
+    </div>
+    
+    <div class="comparison-grid">
+      <div class="comparison-card without">
+        <h3 style="color:#ef4444;">Without AgentProof</h3>
+        <ul class="comparison-list">
+          <li>Blind to agent behaviors until something breaks</li>
+          <li>No visibility into token usage or cost overruns</li>
+          <li>Security vulnerabilities discovered by hackers first</li>
+          <li>Compliance audits reveal undocumented AI risks</li>
+          <li>Insurance claims denied due to lack of monitoring</li>
+        </ul>
+      </div>
+      
+      <div class="comparison-card with">
+        <h3 style="color:var(--green);">With AgentProof</h3>
+        <ul class="comparison-list">
+          <li>Real-time behavioral fingerprinting catches anomalies</li>
+          <li>Token optimization saves 30-50% on AI costs</li>
+          <li>Proactive vulnerability detection before exploitation</li>
+          <li>Automated compliance documentation and audit trails</li>
+          <li>Insurance-ready with continuous monitoring proof</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Enterprise Services -->
 <section id="services" class="cta-section" style="background:rgba(59, 130, 246, 0.03);">
-  <div class="container" style="max-width:1400px;margin:0 auto;padding:0 2rem;">
+  <div class="container">
     <h2 style="font-size:2.5rem;margin-bottom:1rem;">Compliance & Certification Services</h2>
     <p style="font-size:1.3rem;margin-bottom:3rem;color:var(--blue);">Expert guidance for regulated industries</p>
     
@@ -1643,7 +1742,7 @@ footer a{
 
 <!-- Partner Ecosystem -->
 <section id="partners" class="cta-section">
-  <div class="container" style="max-width:1400px;margin:0 auto;padding:0 2rem;">
+  <div class="container">
     <h2 style="font-size:2.5rem;margin-bottom:1rem;">Partner Ecosystem</h2>
     <p style="font-size:1.5rem;margin-bottom:2rem;color:var(--blue);">Supporting 50+ AI frameworks and platforms</p>
     <p style="font-size:1.1rem;max-width:900px;margin:0 auto 3rem;">AgentProof seamlessly integrates with every major AI provider, framework, and deployment platform. Our universal compatibility means you're covered regardless of your tech stack.</p>
@@ -1664,7 +1763,7 @@ footer a{
 
 <!-- Careers -->
 <section id="careers" class="cta-section" style="background:rgba(99, 102, 241, 0.03);">
-  <div class="container" style="max-width:1400px;margin:0 auto;padding:0 2rem;">
+  <div class="container">
     <h2 style="font-size:2.5rem;margin-bottom:1rem;">Build the Future of AI Stability</h2>
     <p style="font-size:1.2rem;max-width:900px;margin:0 auto 3rem;line-height:1.8;">Join our mission to make AI reliable, compliant, and trustworthy. We're looking for exceptional engineers, researchers, and operators who want to shape the AI ecosystem.</p>
     
