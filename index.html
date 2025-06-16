@@ -1,32 +1,4 @@
-<!-- Enterprise Services -->
-<section id="services" class="cta-section">
-  <div class="cta-content">
-    <h2>Compliance & Certification Services</h2>
-    <p style="font-size:1.3rem;margin-bottom:2rem;color:var(--green);">Expert guidance for regulated industries</p>
-    
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;max-width:800px;margin:2rem auto;">
-      <div style="text-align:left;background:var(--glass-bg);padding:1.5rem;border-radius:12px;border:1px solid var(--glass-border);">
-        <h3 style="color:var(--green);margin-bottom:0.5rem;">🛡️ Insurance Resilience</h3>
-        <p style="color:var(--text-secondary);font-size:0.9rem;">AI-specific certifications for cyber insurance compliance and claims readiness</p>
-      </div>
-      <div style="text-align:left;background:var(--glass-bg);padding:1.5rem;border-radius:12px;border:1px solid var(--glass-border);">
-        <h3 style="color:var(--green);margin-bottom:0.5rem;">✓ SOC2 Compliance</h3>
-        <p style="color:var(--text-secondary);font-size:0.9rem;">Complete audit preparation and documentation for AI systems and workflows</p>
-      </div>
-      <div style="text-align:left;background:var(--glass-bg);padding:1.5rem;border-radius:12px;border:1px solid var(--glass-border);">
-        <h3 style="color:var(--green);margin-bottom:0.5rem;">🔒 ITAR Compliance</h3>
-        <p style="color:var(--text-secondary);font-size:0.9rem;">Specialized guidance for defense contractors using AI technologies</p>
-      </div>
-      <div style="text-align:left;background:var(--glass-bg);padding:1.5rem;border-radius:12px;border:1px solid var(--glass-border);">
-        <h3 style="color:var(--green);margin-bottom:0.5rem;">🏛️ Regulatory Governance</h3>
-        <p style="color:var(--text-secondary);font-size:0.9rem;">Healthcare, financial services, and government AI compliance frameworks</p>
-      </div>
-    </div>
-    
-    <p style="margin-top:2rem;">Our experts ensure your AI deployments meet the strictest industry standards and regulatory requirements.</p>
-    <button class="btn btn-primary" onclick="openForm('Services')">Get Compliance Support</button>
-  </div>
-</section><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -121,7 +93,7 @@ body{
 
 .orb1{
   width:600px;height:600px;
-  background:radial-gradient(circle,var(--green) 0%,transparent 70%);
+  background:radial-gradient(circle,var(--blue) 0%,transparent 70%);
   top:-200px;left:-200px;
   animation-delay:0s;
 }
@@ -187,9 +159,7 @@ header.scrolled{
 .logo{
   font-size:1.5rem;
   font-weight:700;
-  background:linear-gradient(135deg,var(--green) 0%,var(--blue) 100%);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+  color:white;
 }
 
 nav{display:flex;gap:2rem;align-items:center;}
@@ -226,14 +196,25 @@ nav a:hover::after{width:100%;}
 }
 
 .hero h1{
-  font-size:3.5rem;
+  font-size:3rem;
   font-weight:800;
   line-height:1.2;
   margin-bottom:1.5rem;
+  max-width:1000px;
+  margin-left:auto;
+  margin-right:auto;
   background:linear-gradient(135deg,var(--text-primary) 0%,var(--text-secondary) 100%);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   animation:fadeInUp 1s ease-out;
+  white-space:nowrap;
+}
+
+@media(max-width:1200px){
+  .hero h1{
+    font-size:2.5rem;
+    white-space:normal;
+  }
 }
 
 .hero .subtitle{
@@ -323,7 +304,8 @@ nav a:hover::after{width:100%;}
   display:flex;
   justify-content:center;
   gap:2rem;
-  margin-top:3rem;
+  margin-top:2rem;
+  margin-bottom:0;
   flex-wrap:wrap;
   animation:fadeInUp 1s ease-out 0.6s;
   animation-fill-mode:both;
@@ -1096,15 +1078,31 @@ footer a{
   .comparison-grid{grid-template-columns:1fr;gap:2rem;}
   .flow-diagram{gap:1rem;}
   .flow-arrow{display:none;}
-  nav{gap:1rem;}
-  nav a{font-size:0.9rem;}
+  nav{
+    gap:0.75rem;
+    flex-wrap:wrap;
+  }
+  nav a{font-size:0.85rem;}
   .pricing-card{width:100%;max-width:400px;}
   .monitor-grid{grid-template-columns:1fr;}
 }
 
 @media(max-width:500px){
-  header{padding:1rem;}
-  .hero{padding:6rem 1rem 3rem;}
+  header{
+    padding:1rem;
+    flex-direction:column;
+    gap:1rem;
+  }
+  .logo{font-size:1.3rem;}
+  nav{
+    width:100%;
+    justify-content:center;
+  }
+  nav a{
+    font-size:0.8rem;
+    margin:0 0.5rem;
+  }
+  .hero{padding:5rem 1rem 2rem;}
   .hero h1{font-size:2rem;}
   .section-title{font-size:2rem;}
   .trust-strip{gap:1rem;}
@@ -1151,42 +1149,6 @@ footer a{
 
 <!-- Problem/Solution -->
 <section class="comparison-section">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">The Security Crisis Is Real</h2>
-      <p class="section-subtitle">EchoLeaks exposed a 5-month vulnerability that behavioral monitoring would have caught on day one. Our analysis shows 1 in 3 AI agents have similar risks right now.</p>
-    </div>
-    
-    <div class="comparison-grid">
-      <div class="comparison-card without">
-        <h3>Without Monitoring</h3>
-        <ul class="comparison-list">
-          <li>Fail insurance audits</li>
-          <li>Miss compliance deadlines</li>
-          <li>No behavioral baselines</li>
-          <li>Reactive incident response</li>
-          <li>Uncontrolled token costs</li>
-          <li>Unknown agent access</li>
-        </ul>
-      </div>
-      
-      <div class="comparison-card with">
-        <h3>With AgentProof</h3>
-        <ul class="comparison-list">
-          <li>Insurance-ready reports</li>
-          <li>Compliance documentation</li>
-          <li>Behavioral fingerprinting</li>
-          <li>Proactive anomaly alerts</li>
-          <li>Cost optimization insights</li>
-          <li>Complete audit trails</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Platform Diagram (Hub) -->
-<section class="flow-section" id="hub-platform">
 <section id="monitor" class="monitor-section">
   <div class="container">
     <div class="section-header">
@@ -1369,7 +1331,7 @@ footer a{
     </div>
     <div style="text-align:center;">
       <div style="font-size:1.5rem;margin-bottom:0.5rem;">🏢</div>
-      <div style="color:var(--text-secondary);font-size:0.9rem;">GitHub Enterprise Security</div>
+      <div style="color:var(--text-secondary);font-size:0.9rem;">Enterprise-Grade Security</div>
     </div>
     <div style="text-align:center;">
       <div style="font-size:1.5rem;margin-bottom:0.5rem;">📊</div>
@@ -1448,40 +1410,80 @@ footer a{
 </section>
 
 <!-- Enterprise Services -->
-<section id="services" class="cta-section">
-  <div class="cta-content">
-    <h2>Enterprise Services</h2>
-    <p>Our experts deliver custom implementations, compliance frameworks, and dedicated support to ensure your AI operations run flawlessly at scale.</p>
-    <button class="btn btn-primary" onclick="openForm('Services')">Explore Services</button>
+<section id="services" class="cta-section" style="background:rgba(59, 130, 246, 0.03);">
+  <div class="container" style="max-width:1400px;margin:0 auto;padding:0 2rem;">
+    <h2 style="font-size:2.5rem;margin-bottom:1rem;">Compliance & Certification Services</h2>
+    <p style="font-size:1.3rem;margin-bottom:3rem;color:var(--blue);">Expert guidance for regulated industries</p>
+    
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-bottom:3rem;">
+      <div style="text-align:left;background:var(--glass-bg);padding:2rem;border-radius:12px;border:1px solid var(--glass-border);backdrop-filter:blur(10px);">
+        <h3 style="color:var(--blue);margin-bottom:0.75rem;font-size:1.25rem;">🛡️ Insurance Resilience</h3>
+        <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.6;">AI-specific certifications for cyber insurance compliance and claims readiness</p>
+      </div>
+      <div style="text-align:left;background:var(--glass-bg);padding:2rem;border-radius:12px;border:1px solid var(--glass-border);backdrop-filter:blur(10px);">
+        <h3 style="color:var(--blue);margin-bottom:0.75rem;font-size:1.25rem;">✓ SOC2 Compliance</h3>
+        <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.6;">Complete audit preparation and documentation for AI systems and workflows</p>
+      </div>
+      <div style="text-align:left;background:var(--glass-bg);padding:2rem;border-radius:12px;border:1px solid var(--glass-border);backdrop-filter:blur(10px);">
+        <h3 style="color:var(--blue);margin-bottom:0.75rem;font-size:1.25rem;">🔒 ITAR Compliance</h3>
+        <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.6;">Specialized guidance for defense contractors using AI technologies</p>
+      </div>
+      <div style="text-align:left;background:var(--glass-bg);padding:2rem;border-radius:12px;border:1px solid var(--glass-border);backdrop-filter:blur(10px);">
+        <h3 style="color:var(--blue);margin-bottom:0.75rem;font-size:1.25rem;">🏛️ Regulatory Governance</h3>
+        <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.6;">Healthcare, financial services, and government AI compliance frameworks</p>
+      </div>
+    </div>
+    
+    <p style="font-size:1.1rem;margin-bottom:2rem;">Our experts ensure your AI deployments meet the strictest industry standards and regulatory requirements.</p>
+    <button class="btn btn-primary" onclick="openForm('Services')">Get Compliance Support</button>
   </div>
 </section>
 
 <!-- Partner Ecosystem -->
-<section id="partners" class="cta-section" style="background:rgba(255,255,255,0.02);">
-  <div class="cta-content">
-    <h2>Partner Ecosystem</h2>
-    <p style="font-size:1.3rem;margin-bottom:2rem;color:var(--green);">Supporting 50+ AI frameworks and platforms</p>
-    <p>AgentProof seamlessly integrates with every major AI provider, framework, and deployment platform. Our universal compatibility means you're covered regardless of your tech stack.</p>
+<section id="partners" class="cta-section">
+  <div class="container" style="max-width:1400px;margin:0 auto;padding:0 2rem;">
+    <h2 style="font-size:2.5rem;margin-bottom:1rem;">Partner Ecosystem</h2>
+    <p style="font-size:1.5rem;margin-bottom:2rem;color:var(--blue);">Supporting 50+ AI frameworks and platforms</p>
+    <p style="font-size:1.1rem;max-width:900px;margin:0 auto 3rem;">AgentProof seamlessly integrates with every major AI provider, framework, and deployment platform. Our universal compatibility means you're covered regardless of your tech stack.</p>
     
-    <div style="display:flex;justify-content:center;gap:3rem;margin:2rem 0;flex-wrap:wrap;opacity:0.7;">
-      <span>OpenAI</span>
-      <span>Anthropic</span>
-      <span>LangChain</span>
-      <span>HuggingFace</span>
-      <span>Vertex AI</span>
-      <span>And 45+ more</span>
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;margin:3rem 0;opacity:0.8;max-width:1000px;margin-left:auto;margin-right:auto;">
+      <div style="padding:1rem;background:var(--glass-bg);border-radius:8px;text-align:center;border:1px solid var(--glass-border);">OpenAI</div>
+      <div style="padding:1rem;background:var(--glass-bg);border-radius:8px;text-align:center;border:1px solid var(--glass-border);">Anthropic</div>
+      <div style="padding:1rem;background:var(--glass-bg);border-radius:8px;text-align:center;border:1px solid var(--glass-border);">LangChain</div>
+      <div style="padding:1rem;background:var(--glass-bg);border-radius:8px;text-align:center;border:1px solid var(--glass-border);">HuggingFace</div>
+      <div style="padding:1rem;background:var(--glass-bg);border-radius:8px;text-align:center;border:1px solid var(--glass-border);">Vertex AI</div>
+      <div style="padding:1rem;background:var(--glass-bg);border-radius:8px;text-align:center;border:1px solid var(--glass-border);">45+ more</div>
     </div>
     
-    <p style="margin-top:2rem;">Join our partner program to get priority support, co-marketing opportunities, and early access to new features.</p>
+    <p style="margin-top:3rem;font-size:1.1rem;margin-bottom:2rem;">Join our partner program to get priority support, co-marketing opportunities, and early access to new features.</p>
     <button class="btn btn-primary" onclick="openForm('Partnership')">Become a Partner</button>
   </div>
 </section>
 
 <!-- Careers -->
-<section id="careers" class="cta-section">
-  <div class="cta-content">
-    <h2>Build the Future of AI Stability</h2>
-    <p>Join our mission to make AI reliable, compliant, and trustworthy. We're looking for exceptional engineers, researchers, and operators who want to shape the AI ecosystem.</p>
+<section id="careers" class="cta-section" style="background:rgba(99, 102, 241, 0.03);">
+  <div class="container" style="max-width:1400px;margin:0 auto;padding:0 2rem;">
+    <h2 style="font-size:2.5rem;margin-bottom:1rem;">Build the Future of AI Stability</h2>
+    <p style="font-size:1.2rem;max-width:900px;margin:0 auto 3rem;line-height:1.8;">Join our mission to make AI reliable, compliant, and trustworthy. We're looking for exceptional engineers, researchers, and operators who want to shape the AI ecosystem.</p>
+    
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1000px;margin:0 auto 3rem;">
+      <div style="text-align:center;">
+        <div style="font-size:3rem;color:var(--blue);margin-bottom:0.5rem;">⚙️</div>
+        <h3 style="margin-bottom:0.5rem;">Engineering</h3>
+        <p style="color:var(--text-secondary);">Build the infrastructure powering AI reliability at scale</p>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:3rem;color:var(--blue);margin-bottom:0.5rem;">📈</div>
+        <h3 style="margin-bottom:0.5rem;">Research</h3>
+        <p style="color:var(--text-secondary);">Pioneer new approaches to AI safety and monitoring</p>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:3rem;color:var(--blue);margin-bottom:0.5rem;">🔧</div>
+        <h3 style="margin-bottom:0.5rem;">Operations</h3>
+        <p style="color:var(--text-secondary);">Scale our impact across the AI ecosystem</p>
+      </div>
+    </div>
+    
     <button class="btn btn-primary" onclick="openForm('Career')">View Open Roles</button>
   </div>
 </section>
@@ -1523,7 +1525,7 @@ footer a{
 
 <footer>
   <div style="display:flex;justify-content:center;gap:3rem;margin-bottom:1.5rem;flex-wrap:wrap;">
-    <span style="color:var(--text-secondary);font-size:0.85rem;">🔒 GitHub-Level Security</span>
+    <span style="color:var(--text-secondary);font-size:0.85rem;">🔒 256-bit SSL Encryption</span>
     <span style="color:var(--text-secondary);font-size:0.85rem;">📊 1,000+ Scans Completed</span>
     <span style="color:var(--text-secondary);font-size:0.85rem;">⚡ No Data Stored</span>
     <span style="color:var(--text-secondary);font-size:0.85rem;">✓ SOC2 Ready</span>
