@@ -1392,6 +1392,45 @@ footer a{
     margin: 2rem auto !important;
   }
 }
+/* ─── GLOBAL RESET ─── */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: var(--dark) !important; /* ensure no white/grey shows through */
+}
+
+/* ─── HERO: full‐bleed & full‐height override ─── */
+.hero {
+  margin: 0 !important;
+  padding: 8rem 2rem 4rem !important;
+  position: relative !important;
+  width: 100vw !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  min-height: 100vh !important;       /* fill the full viewport height */
+  background: url('assets/heroimage.png') no-repeat center center/cover !important;
+  background-attachment: scroll !important; /* kill fixed-attachment quirks */
+  overflow: hidden !important;
+}
+.hero::before {
+  background: rgba(10, 14, 39, 0.4) !important; /* lighter overlay for contrast */
+}
+
+/* ─── MOBILE (≤768px): shrink Stability Layer spider-diagram ─── */
+@media only screen and (max-width: 768px) {
+  /* allow the hub section to expand */
+  #hub-platform {
+    overflow: visible !important;
+  }
+  /* uniformly scale the diagram to 40% size */
+  #hub-platform .hub-diagram {
+    transform: scale(0.6) !important;
+    transform-origin: top center !important;
+    margin: 2rem auto !important;
+    width: 100vw !important;
+    height: auto !important;
+  }
+}
 </style>
 </head>
 <body>
