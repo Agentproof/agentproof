@@ -1398,12 +1398,24 @@ footer a{
   background: rgba(10, 14, 39, 0.35) !important;
 }
 
-/* ─── MOBILE (≤768px): shrink Stability Layer diagram by 40% ─── */
+/* ─── MOBILE (≤768px): re-show & shrink Stability Layer diagram by 40% ─── */
 @media (max-width: 768px) {
-  /* un-clip the section wrapper */
+  /* allow the hub section to expand if clipped */
   #hub-platform {
     overflow: visible !important;
   }
+
+  /* force the diagram back on screen and scale it down */
+  #hub-platform .hub-diagram {
+    display: block !important;               /* ensure it’s visible */
+    transform: scale(0.6) !important;        /* shrink to 60% size */
+    transform-origin: top center !important; /* anchor the scaling */
+    margin: 2rem auto !important;            /* center it with breathing room */
+    width: auto !important;                  /* let it size itself */
+    max-width: 100% !important;
+    height: auto !important;
+  }
+}
   /* uniformly scale only the diagram */
   #hub-platform .hub-diagram {
     width: 100vw !important;
