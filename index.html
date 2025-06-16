@@ -52,6 +52,28 @@
 }
 </script>
 <style>
+/* ─── GLOBAL RESET & HERO FULL‐BLEED ─── */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden !important;
+  width: 100% !important;
+  background: var(--dark) !important;
+}
+.hero {
+  /* full‐screen cover */
+  width: 100vw !important;
+  position: relative !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  min-height: 100vh !important;
+  background: url('assets/heroimage.png') center/cover no-repeat !important;
+  background-attachment: scroll !important;
+  overflow: hidden !important;
+}
+.hero::before {
+  background: rgba(10,14,39,0.4) !important;
+}
 :root{
   --green:#0f9d58;
   --green-dark:#0c7b45;
