@@ -204,9 +204,8 @@ nav a::after{
 nav a:hover::after{width:100%;}
 
 /* Hero Section */
-/* Hero Section */
 .hero {
-  /* your original padding/centering */
+  /* layout & spacing */
   padding: 8rem 2rem 4rem;
   text-align: center;
   display: flex;
@@ -214,29 +213,29 @@ nav a:hover::after{width:100%;}
   justify-content: center;
   align-items: center;
 
-  /* full-bleed hack */
+  /* full-bleed hack: center & stretch to edges */
   position: relative !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
   width: 100vw !important;
 
-  /* full-height so next section never peeks through */
+  /* fill full viewport height so next section never peeks through */
   min-height: 100vh !important;
 
-  /* background image + overlay */
-  background-image: url('assets/heroimage.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  overflow: hidden;
+  /* background image */
+  background-image: url('assets/heroimage.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important;  /* use scroll to avoid 1px gaps */
+  overflow: hidden !important;
 }
 
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(10, 14, 39, 0.7);
+  background: rgba(10, 14, 39, 0.4) !important; /* lighter overlay */
   z-index: 0;
 }
 
@@ -245,11 +244,11 @@ nav a:hover::after{width:100%;}
   z-index: 1;
 }
 
+/* ensure mobile uses scroll-attachment */
 @media (max-width: 768px) {
   .hero {
-    background-attachment: scroll;
+    background-attachment: scroll !important;
   }
-}
 
 .hero h1{
   font-size:3rem;
