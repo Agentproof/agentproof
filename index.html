@@ -1453,6 +1453,17 @@ html, body {
     height: auto !important;
   }
 }
+/* ─── MOBILE (≤768px): swap to mobile-friendly diagram ─── */
+@media (max-width: 768px) {
+  /* hide the desktop spider */
+  #hub-platform .hub-diagram {
+    display: none !important;
+  }
+  /* show the mobile SVG fallback */
+  .hub-diagram-mobile {
+    display: block !important;
+  }
+}  
 </style>
 </head>
 <body>
