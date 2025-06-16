@@ -28,29 +28,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1YL3QMKTES"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);/* Fix all overflow issues on mobile */
-@media(max-width:768px){
-  body, html {
-    max-width: 100vw !important;
-    overflow-x: hidden !important;
-  }
-  
-  section {
-    width: 100% !important;
-    max-width: 100vw !important;
-    overflow-x: hidden !important;
-  }
-  
-  .container > * {
-    max-width: 100% !important;
-  }
-  
-  /* Fix inline grid styles */
-  div[style*="display:grid"] {
-    overflow-x: hidden !important;
-    max-width: 100% !important;
-  }
-}
+  function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-1YL3QMKTES');
 </script>
@@ -89,7 +67,7 @@
 }
 
 *{box-sizing:border-box;margin:0;padding:0;}
-html{overflow-x:hidden;width:100%;max-width:100%;}
+html{overflow-x:hidden;}
 body{
   font-family:'Inter',sans-serif;
   background:var(--dark);
@@ -98,7 +76,6 @@ body{
   overflow-x:hidden;
   width:100%;
   position:relative;
-  max-width:100vw;
 }
 
 /* Animated background */
@@ -109,7 +86,6 @@ body{
   background:linear-gradient(180deg,#0a0e27 0%,#11173a 100%);
   overflow:hidden;
   max-width:100vw;
-  width:100vw;
 }
 
 .gradient-orb{
@@ -233,31 +209,21 @@ nav a:hover::after{width:100%;}
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  background-color:var(--dark);
   background-image:url('assets/heroimage.png');
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
   background-attachment:fixed;
-    width:100%;
-  margin:0 auto;
-}
-
-@media(pointer:coarse){
-  .hero{
-    background-attachment:scroll;
-  }
 }
 
 .hero::before{
   content:'';
   position:absolute;
   top:0;
-  left:50%;
-  transform:translateX(-50%);
-  width:100vw;
-  height:100%;
-  background:rgba(10, 14, 39, 0.3);
+  left:0;
+  right:0;
+  bottom:0;
+  background:rgba(10, 14, 39, 0.7);
   z-index:0;
 }
 
@@ -267,9 +233,8 @@ nav a:hover::after{width:100%;}
 }
 
 @media(max-width:768px){
-  /* Hero background scrolls on mobile */
   .hero{
-    background-attachment:scroll !important;
+    background-attachment:scroll;
   }
 }
 
@@ -310,29 +275,6 @@ nav a:hover::after{width:100%;}
   margin:0 auto 2rem;
   animation:fadeInUp 1s ease-out 0.2s;
   animation-fill-mode:both;
-}
-
-/* Mobile specific background fix */
-@media only screen and (max-width: 768px),
-       only screen and (max-device-width: 768px) {
-  .hero {
-    background-attachment: initial !important;
-    background-position: center center !important;
-  }
-}
-
-/* Touch device fix for background-attachment */
-@media (hover: none) and (pointer: coarse) {
-  .hero {
-    background-attachment: scroll !important;
-  }
-}
-
-/* iOS background-attachment fix */
-@supports (-webkit-touch-callout: none) {
-  .hero {
-    background-attachment: scroll !important;
-  }
 }
 
 @keyframes fadeInUp{
@@ -434,12 +376,7 @@ nav a:hover::after{width:100%;}
   font-weight:bold;
 }
 
-/* Global overflow fix */
-html, body{
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
+/* Section base styles */
 section{
   width:100%;
   max-width:100vw;
@@ -628,7 +565,6 @@ section{
   max-width:800px;
   height:500px;
   margin:3rem auto;
-  overflow:hidden;
 }
 
 .hub-center{
@@ -1089,19 +1025,6 @@ section{
   font-size:1.1rem;
 }
 
-/* Ensure no horizontal overflow */
-#services, #partners, #careers {
-  overflow-x: hidden;
-  max-width: 100vw;
-}
-
-#services .container,
-#partners .container,
-#careers .container {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
 /* Footer */
 footer{
   text-align:center;
@@ -1210,10 +1133,6 @@ footer a{
     display:none;
   }
   
-  .hero{
-    background-attachment:scroll !important;
-  }
-  
   .hero h1{
     font-size:2rem;
     white-space:normal;
@@ -1223,108 +1142,8 @@ footer a{
     display:none;
   }
   .hero::before{
-    background:rgba(10, 14, 39, 0.5);
+    opacity:0.85;
   }
-  
-  /* Show mobile headings in hub */
-  .mobile-heading{
-    display:block !important;
-    text-align:center;
-    font-size:1rem;
-    color:var(--text-secondary);
-    margin-bottom:1rem;
-  }
-  
-  /* Simple mobile hub layout */
-   /* ——— Mobile Stability-Layer fixes ——— */
-  .monitor-section > div[style*="overflow:hidden"] {
-    overflow: visible !important;
-  }
-  .hub-diagram {
-    transform: none !important;
-    margin-bottom: 0 !important;
-    height: auto !important;
-    padding: 1rem !important;
-  }
-  .connection-lines {
-    display: none !important;
-  }
-  .orbit-container {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) !important;
-    gap: 0.75rem !important;
-    width: 100% !important;
-    padding: 0 !important;
-    position: relative !important;
-    margin-bottom: 1.5rem !important;
-  }
-  .orbit-container .orbit-box {
-    justify-self: center !important;
-    max-width: 90% !important;
-  }
-  .capabilities-row {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.75rem !important;
-    width: 100% !important;
-    padding: 0.5rem 0 !important;
-  }
-  .capability-item {
-    justify-content: center !important;
-    text-align: center !important;
-  }
-  .capability-icon {
-    font-size: 1.25rem !important;
-  }
-.monitor-section > div[style*="overflow:hidden"] {
-  overflow: visible !important;
-}
-.hub-diagram {
-  transform: none !important;
-  margin-bottom: 0 !important;
-  height: auto !important;
-  padding: 1rem !important;
-}
-.connection-lines {
-  display: none !important;
-}
-.orbit-container {
-  display: block !important;
-  position: relative !important;
-  padding: 0 !important;
-}
-.orbit-group {
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-  gap: 0.5rem !important;
-  margin-bottom: 1rem !important;
-  transform: none !important;
-  top: auto !important; left: auto !important; right: auto !important;
-}
-.orbit-item {
-  margin: 0 !important;
-  opacity: 1 !important;
-  animation: none !important;
-}
-.orbit-box {
-  max-width: 280px !important;
-  width: 100% !important;
-  margin: 0 auto !important;
-}
-.capabilities-row {
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important;
-  gap: 0.5rem !important;
-  padding: 0.5rem !important;
-}
-.capability-item {
-  flex-direction: column !important;
-  font-size: 0.8rem !important;
-}
-.capability-icon {
-  font-size: 1rem !important;
-}
-  
   .comparison-grid{grid-template-columns:1fr;gap:2rem;}
   .flow-diagram{gap:1rem;}
   .flow-arrow{display:none;}
@@ -1348,9 +1167,6 @@ footer a{
     height:auto;
     min-height:auto;
     padding:1rem;
-    transform:scale(0.7);
-    transform-origin:center top;
-    margin-bottom:-100px;
   }
   
   .hub-center{
@@ -1456,10 +1272,6 @@ footer a{
 }
 
 @media(max-width:500px){
-  .hero{
-    background-attachment:scroll !important;
-  }
-  
   header{
     padding:1rem;
     flex-wrap:nowrap;
@@ -1483,11 +1295,7 @@ footer a{
     padding:0.25rem 0.5rem;
     white-space:nowrap;
   }
-  .hero{
-    padding:5rem 1rem 2rem;
-    margin-left:0 !important;
-    width:100% !important;
-  }
+  .hero{padding:5rem 1rem 2rem;}
   .hero h1{
     font-size:1.75rem;
     line-height:1.3;
@@ -1529,106 +1337,28 @@ footer a{
     font-size:1rem !important;
   }
   
-  /* Hub diagram mobile - scale to 65% */
-  .hub-diagram{
-    transform:scale(0.65) !important;
-    margin:-80px auto !important;
-  }
-  
-  /* Override orbit positions on mobile */
-  @media(max-width:500px){
-    .orbit-group{
-      width:100% !important;
-      margin:0 auto 1rem !important;
-    }
-    
-    .orbit-group.left,
-    .orbit-group.right{
-      position:relative !important;
-      left:auto !important;
-      right:auto !important;
-    }
-  }
-  
-  .hub-logo{
-    width:120px !important;
-    height:120px !important;
-  }
-  
+  /* Hub diagram mobile */
   .orbit-item{
     margin:10px 0;
   }
   .orbit-box{
-    font-size:0.85rem !important;
-    padding:10px 16px !important;
+    font-size:0.75rem !important;
+    padding:8px 12px !important;
   }
   
   /* Fix service grid on mobile */
   #services div[style*="grid-template-columns:repeat(4,1fr)"] {
     grid-template-columns: repeat(1, 1fr) !important;
-    padding: 0 !important;
-    gap: 1rem !important;
-  }
-  
-  #services .container div > div {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
   }
   
   /* Fix partner grid on mobile */
   #partners div[style*="grid-template-columns:repeat(6,1fr)"] {
     grid-template-columns: repeat(2, 1fr) !important;
-    padding: 0 !important;
   }
   
   /* Fix careers grid on mobile */
   #careers div[style*="grid-template-columns:repeat(3,1fr)"] {
     grid-template-columns: repeat(1, 1fr) !important;
-    padding: 0 !important;
-  }
-  
-  /* Ensure containers don't overflow */
-  .container {
-    padding: 0 1rem !important;
-    overflow-x: hidden !important;
-  }
-/* Fix all overflow issues on mobile */
-@media(max-width:768px){
-  body > * {
-    max-width: 100vw !important;
-    overflow-x: hidden !important;
-  }
-  
-  section {
-    width: 100% !important;
-    max-width: 100vw !important;
-    overflow-x: hidden !important;
-  }
-  
-  .container > * {
-    max-width: 100% !important;
-  }
-  
-  /* Fix inline grid styles */
-  div[style*="display:grid"] {
-    overflow-x: hidden !important;
-    max-width: 100% !important;
-  }
-}
-/* ——— Mobile: shrink Stability-Layer diagram ——— */
-@media only screen and (max-width: 768px) {
-  /* make sure the overflow wrapper won’t clip the scaled graphic */
-  .monitor-section > div[style*="overflow:hidden"] {
-    overflow: visible !important;
-  }
-
-  /* shrink the whole hub */
-  .hub-diagram {
-    transform: scale(0.6) !important;          /* adjust 0.5–0.7 to taste */
-    transform-origin: top center !important;   /* anchor from the top */
-    margin: 1rem auto !important;             /* center it & add breathing room */
-    height: auto !important;                  /* ensure it can shrink/expand */
   }
 }
 </style>
@@ -1755,8 +1485,7 @@ footer a{
     </div>
     
     <!-- Visual Hub Diagram -->
-    <div style="overflow:hidden;width:100%;">
-      <div class="hub-diagram">
+    <div class="hub-diagram">
       <!-- Center Hub -->
       <div class="hub-center">
         <div class="hub-logo">
@@ -1769,6 +1498,11 @@ footer a{
       
       <!-- Orbiting Elements -->
       <div class="orbit-container">
+        <!-- Left Side - Your AI -->
+        <div class="orbit-group left">
+          <div class="orbit-item" style="--delay:0s;">
+            <div class="orbit-box">Internal Agents</div>
+          </div>
           <div class="orbit-item" style="--delay:0.5s;">
             <div class="orbit-box">RAG Applications</div>
           </div>
@@ -1782,7 +1516,6 @@ footer a{
         
         <!-- Right Side - Providers -->
         <div class="orbit-group right">
-          <h4 style="display:none;" class="mobile-heading">AI Providers</h4>
           <div class="orbit-item" style="--delay:0.2s;">
             <div class="orbit-box provider">OpenAI</div>
           </div>
@@ -1831,7 +1564,6 @@ footer a{
           <div class="capability-icon">✓</div>
           <span>Compliance</span>
         </div>
-      </div>
       </div>
     </div>
     
@@ -1969,20 +1701,20 @@ footer a{
     <h2 style="font-size:2.5rem;margin-bottom:1rem;">Compliance & Certification Services</h2>
     <p style="font-size:1.3rem;margin-bottom:3rem;color:var(--blue);">Expert guidance for regulated industries</p>
     
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-bottom:3rem;width:100%;">
-      <div style="text-align:left;background:var(--glass-bg);padding:2rem;border-radius:12px;border:1px solid var(--glass-border);backdrop-filter:blur(10px);width:100%;">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-bottom:3rem;">
+      <div style="text-align:left;background:var(--glass-bg);padding:2rem;border-radius:12px;border:1px solid var(--glass-border);backdrop-filter:blur(10px);">
         <h3 style="color:var(--blue);margin-bottom:0.75rem;font-size:1.25rem;">🛡️ Insurance Resilience</h3>
         <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.6;">AI-specific certifications for cyber insurance compliance and claims readiness</p>
       </div>
-      <div style="text-align:left;background:var(--glass-bg);padding:2rem;border-radius:12px;border:1px solid var(--glass-border);backdrop-filter:blur(10px);width:100%;">
+      <div style="text-align:left;background:var(--glass-bg);padding:2rem;border-radius:12px;border:1px solid var(--glass-border);backdrop-filter:blur(10px);">
         <h3 style="color:var(--blue);margin-bottom:0.75rem;font-size:1.25rem;">✓ SOC2 Compliance</h3>
         <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.6;">Complete audit preparation and documentation for AI systems and workflows</p>
       </div>
-      <div style="text-align:left;background:var(--glass-bg);padding:2rem;border-radius:12px;border:1px solid var(--glass-border);backdrop-filter:blur(10px);width:100%;">
+      <div style="text-align:left;background:var(--glass-bg);padding:2rem;border-radius:12px;border:1px solid var(--glass-border);backdrop-filter:blur(10px);">
         <h3 style="color:var(--blue);margin-bottom:0.75rem;font-size:1.25rem;">🔒 ITAR Compliance</h3>
         <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.6;">Specialized guidance for defense contractors using AI technologies</p>
       </div>
-      <div style="text-align:left;background:var(--glass-bg);padding:2rem;border-radius:12px;border:1px solid var(--glass-border);backdrop-filter:blur(10px);width:100%;">
+      <div style="text-align:left;background:var(--glass-bg);padding:2rem;border-radius:12px;border:1px solid var(--glass-border);backdrop-filter:blur(10px);">
         <h3 style="color:var(--blue);margin-bottom:0.75rem;font-size:1.25rem;">🏛️ Regulatory Governance</h3>
         <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.6;">Healthcare, financial services, and government AI compliance frameworks</p>
       </div>
@@ -2000,13 +1732,13 @@ footer a{
     <p style="font-size:1.5rem;margin-bottom:2rem;color:var(--blue);">Supporting 50+ AI frameworks and platforms</p>
     <p style="font-size:1.1rem;max-width:900px;margin:0 auto 3rem;">AgentProof seamlessly integrates with every major AI provider, framework, and deployment platform. Our universal compatibility means you're covered regardless of your tech stack.</p>
     
-    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;margin:3rem 0;opacity:0.8;max-width:1000px;margin-left:auto;margin-right:auto;width:100%;">
-      <div style="padding:1rem;background:var(--glass-bg);border-radius:8px;text-align:center;border:1px solid var(--glass-border);width:100%;">OpenAI</div>
-      <div style="padding:1rem;background:var(--glass-bg);border-radius:8px;text-align:center;border:1px solid var(--glass-border);width:100%;">Anthropic</div>
-      <div style="padding:1rem;background:var(--glass-bg);border-radius:8px;text-align:center;border:1px solid var(--glass-border);width:100%;">LangChain</div>
-      <div style="padding:1rem;background:var(--glass-bg);border-radius:8px;text-align:center;border:1px solid var(--glass-border);width:100%;">HuggingFace</div>
-      <div style="padding:1rem;background:var(--glass-bg);border-radius:8px;text-align:center;border:1px solid var(--glass-border);width:100%;">Vertex AI</div>
-      <div style="padding:1rem;background:var(--glass-bg);border-radius:8px;text-align:center;border:1px solid var(--glass-border);width:100%;">45+ more</div>
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;margin:3rem 0;opacity:0.8;max-width:1000px;margin-left:auto;margin-right:auto;">
+      <div style="padding:1rem;background:var(--glass-bg);border-radius:8px;text-align:center;border:1px solid var(--glass-border);">OpenAI</div>
+      <div style="padding:1rem;background:var(--glass-bg);border-radius:8px;text-align:center;border:1px solid var(--glass-border);">Anthropic</div>
+      <div style="padding:1rem;background:var(--glass-bg);border-radius:8px;text-align:center;border:1px solid var(--glass-border);">LangChain</div>
+      <div style="padding:1rem;background:var(--glass-bg);border-radius:8px;text-align:center;border:1px solid var(--glass-border);">HuggingFace</div>
+      <div style="padding:1rem;background:var(--glass-bg);border-radius:8px;text-align:center;border:1px solid var(--glass-border);">Vertex AI</div>
+      <div style="padding:1rem;background:var(--glass-bg);border-radius:8px;text-align:center;border:1px solid var(--glass-border);">45+ more</div>
     </div>
     
     <p style="margin-top:3rem;font-size:1.1rem;margin-bottom:2rem;">Join our partner program to get priority support, co-marketing opportunities, and early access to new features.</p>
@@ -2018,20 +1750,20 @@ footer a{
 <section id="careers" class="cta-section" style="background:rgba(99, 102, 241, 0.03);">
   <div class="container">
     <h2 style="font-size:2.5rem;margin-bottom:1rem;">Build the Future of AI Stability</h2>
-    <p style="font-size:1.2rem;max-width:900px;margin:0 auto 3rem;line-height:1.8;">Join our mission to make AI reliable, compliant, and trustworthy. We are looking for exceptional engineers, researchers, and operators who want to shape the AI ecosystem.</p>
+    <p style="font-size:1.2rem;max-width:900px;margin:0 auto 3rem;line-height:1.8;">Join our mission to make AI reliable, compliant, and trustworthy. We're looking for exceptional engineers, researchers, and operators who want to shape the AI ecosystem.</p>
     
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1000px;margin:0 auto 3rem;width:100%;">
-      <div style="text-align:center;width:100%;">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1000px;margin:0 auto 3rem;">
+      <div style="text-align:center;">
         <div style="font-size:3rem;color:var(--blue);margin-bottom:0.5rem;">⚙️</div>
         <h3 style="margin-bottom:0.5rem;">Engineering</h3>
         <p style="color:var(--text-secondary);">Build the infrastructure powering AI reliability at scale</p>
       </div>
-      <div style="text-align:center;width:100%;">
+      <div style="text-align:center;">
         <div style="font-size:3rem;color:var(--blue);margin-bottom:0.5rem;">📈</div>
         <h3 style="margin-bottom:0.5rem;">Research</h3>
         <p style="color:var(--text-secondary);">Pioneer new approaches to AI safety and monitoring</p>
       </div>
-      <div style="text-align:center;width:100%;">
+      <div style="text-align:center;">
         <div style="font-size:3rem;color:var(--blue);margin-bottom:0.5rem;">🔧</div>
         <h3 style="margin-bottom:0.5rem;">Operations</h3>
         <p style="color:var(--text-secondary);">Scale our impact across the AI ecosystem</p>
@@ -2072,7 +1804,7 @@ footer a{
     <span style="color:var(--text-secondary);font-size:0.85rem;">⚡ No Data Stored</span>
     <span style="color:var(--text-secondary);font-size:0.85rem;">✓ SOC2 Ready</span>
   </div>
-  <p>&copy; 2025 AgentProof. All rights reserved. 
+  <p>© 2025 AgentProof. All rights reserved. 
     <a href="/terms">Terms</a> · 
     <a href="/privacy">Privacy</a> · 
     <a href="/security">Security</a>
@@ -2113,7 +1845,7 @@ function closeForm() {
 document.getElementById('contactForm').addEventListener('submit', function(e) {
   e.preventDefault();
   // For now, just show success and close
-  alert("Thank you for your inquiry! We'll be in touch within 24 hours.");
+  alert('Thank you for your inquiry! We\'ll be in touch within 24 hours.');
   closeForm();
   this.reset();
 });
@@ -2154,51 +1886,23 @@ function showExitModal() {
   exitModal.id = 'exitModal';
   exitModal.style.cssText = 'display:flex;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:9999;justify-content:center;align-items:center;padding:1rem;';
   
-  const modalContent = document.createElement('div');
-  modalContent.style.cssText = 'background:var(--dark-light);border:2px solid var(--green);border-radius:16px;padding:3rem;width:90%;max-width:500px;text-align:center;position:relative;margin:0 auto;';
+  exitModal.innerHTML = `
+    <div style="background:var(--dark-light);border:2px solid var(--green);border-radius:16px;padding:3rem;max-width:500px;width:100%;text-align:center;position:relative;">
+      <button onclick="document.getElementById('exitModal').remove()" style="position:absolute;top:15px;right:15px;background:none;border:none;color:var(--text-secondary);font-size:1.5rem;cursor:pointer;">×</button>
+      <h2 style="font-size:2rem;margin-bottom:1rem;color:var(--text-primary);">Wait! Don't Leave Empty-Handed</h2>
+      <p style="color:var(--text-secondary);margin-bottom:1.5rem;font-size:1.1rem;">Get 10% off your first security assessment</p>
+      <p style="color:var(--green);font-size:1.5rem;margin-bottom:1.5rem;font-weight:600;">Use code: AvoidEcho10</p>
+      <a href="#pricing" class="btn btn-primary" onclick="document.getElementById('exitModal').remove()" style="display:inline-block;padding:16px 40px;background:var(--green);color:white;text-decoration:none;border-radius:50px;font-weight:500;">Claim Discount</a>
+      <p style="color:var(--text-muted);margin-top:1rem;font-size:0.9rem;">Over 1,000 AI agents analyzed and counting</p>
+    </div>
+  `;
   
-  const closeBtn = document.createElement('button');
-  closeBtn.style.cssText = 'position:absolute;top:15px;right:15px;background:none;border:none;color:var(--text-secondary);font-size:1.5rem;cursor:pointer;';
-  closeBtn.innerHTML = '×';
-  closeBtn.onclick = function() { exitModal.remove(); };
-  
-  const heading = document.createElement('h2');
-  heading.style.cssText = 'font-size:2rem;margin-bottom:1rem;color:var(--text-primary);';
-  heading.textContent = "Wait! Don't Leave Empty-Handed";
-  
-  const subtitle = document.createElement('p');
-  subtitle.style.cssText = 'color:var(--text-secondary);margin-bottom:1.5rem;font-size:1.1rem;';
-  subtitle.textContent = 'Get 10% off your first security assessment';
-  
-  const code = document.createElement('p');
-  code.style.cssText = 'color:var(--green);font-size:1.5rem;margin-bottom:1.5rem;font-weight:600;';
-  code.textContent = 'Use code: AvoidEcho10';
-  
-  const claimBtn = document.createElement('a');
-  claimBtn.href = '#pricing';
-  claimBtn.className = 'btn btn-primary';
-  claimBtn.style.cssText = 'display:inline-block;padding:16px 40px;background:var(--green);color:white;text-decoration:none;border-radius:50px;font-weight:500;';
-  claimBtn.textContent = 'Claim Discount';
-  claimBtn.onclick = function() { exitModal.remove(); };
-  
-  const footer = document.createElement('p');
-  footer.style.cssText = 'color:var(--text-muted);margin-top:1rem;font-size:0.9rem;';
-  footer.textContent = 'Over 1,000 AI agents analyzed and counting';
-  
-  modalContent.appendChild(closeBtn);
-  modalContent.appendChild(heading);
-  modalContent.appendChild(subtitle);
-  modalContent.appendChild(code);
-  modalContent.appendChild(claimBtn);
-  modalContent.appendChild(footer);
-  
-  exitModal.appendChild(modalContent);
   document.body.appendChild(exitModal);
   
   // Close on outside click
   exitModal.addEventListener('click', function(e) {
-    if (e.target === exitModal) {
-      exitModal.remove();
+    if (e.target === this) {
+      this.remove();
     }
   });
 }
