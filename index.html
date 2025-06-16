@@ -1103,32 +1103,47 @@ footer a{
   .monitor-grid{grid-template-columns:1fr;}
   
 @media(max-width:768px){
-  /* Simple scaled-down version for mobile */
-  .hub-diagram{
-    transform:scale(0.5);
-    margin:-100px auto;
-    max-width:400px;
-  }
-  
-  .hub-logo{
-    width:120px;
-    height:120px;
-    font-size:0.8rem;
-  }
-  
-  .orbit-box{
-    font-size:0.7rem;
-    padding:8px 16px;
-  }
-  
-  .capability-item{
-    font-size:0.7rem;
-  }
-  
-  .capabilities-row{
-    padding:0.5rem 1rem;
+  /* Fix header */
+  header{
+    padding:0.75rem;
     gap:0.5rem;
   }
+  nav{
+    display:flex;
+    gap:0.5rem;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  nav a{
+    font-size:0.75rem;
+    padding:0.25rem 0.5rem;
+  }
+  
+  /* Fix hub diagram - make it wider */
+  .hub-diagram{
+    transform:scale(0.7);
+    margin:-50px auto;
+    width:100%;
+  }
+  
+  /* Stats must be 2x2 grid */
+  .stats-horizontal{
+    display:grid !important;
+    grid-template-columns:repeat(2,1fr) !important;
+    gap:1rem !important;
+    width:100% !important;
+  }
+  
+  /* Other mobile fixes */
+  .hero h1{
+    font-size:2rem;
+    white-space:normal;
+    line-height:1.3;
+  }
+  .comparison-grid{grid-template-columns:1fr;gap:2rem;}
+  .pricing-card{width:100%;max-width:400px;}
+  .monitor-grid{grid-template-columns:1fr;}
+}
   
   /* Fix stats */
   .stats-horizontal{
@@ -1140,24 +1155,24 @@ footer a{
     width:100% !important;
   }
   
-  /* Reduce boxy appearance on mobile */
-  .monitor-card,
-  .comparison-card,
-  .pricing-card{
-    background:rgba(255, 255, 255, 0.03);
-    border:1px solid rgba(255, 255, 255, 0.05);
-  }
-  
-  /* Remove excessive borders */
-  #services .container > div > div,
-  #partners .container > div > div{
-    background:transparent !important;
-    border:none !important;
-    border-bottom:1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius:0 !important;
-    padding-left:0 !important;
-    padding-right:0 !important;
-  }
+/* Trust Signals - make them glass style */
+section[style*="padding:2rem;background:rgba(255,255,255,0.02)"] > div > div{
+  background:transparent !important;
+}
+
+section[style*="padding:2rem;background:rgba(255,255,255,0.02)"] > div > div > div{
+  background:rgba(255, 255, 255, 0.03);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255, 255, 255, 0.05);
+  border-radius:12px;
+  padding:1rem;
+  transition:all 0.3s;
+}
+
+section[style*="padding:2rem;background:rgba(255,255,255,0.02)"] > div > div > div:hover{
+  transform:translateY(-2px);
+  border-color:rgba(59, 130, 246, 0.3);
+}
 }
 
 @media(max-width:500px){
