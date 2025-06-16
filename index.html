@@ -141,6 +141,17 @@ footer{
   color:var(--green);
   text-decoration:underline;
 }
+/* Keep pricing titles & prices aligned across cards */
+.card h3{
+  min-height:48px;          /* reserve ≈ two text lines */
+  display:flex;align-items:center;justify-content:center;
+}
+
+.card .price{
+  min-height:38px;          /* reserve one line of price text */
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1rem;       /* same gap above bullet list    */
+}
 /* ----- Uniform trust badges ----- */
 .badge-row{
   display:flex;
