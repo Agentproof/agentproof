@@ -1361,28 +1361,34 @@ footer a{
     grid-template-columns: repeat(1, 1fr) !important;
   }
 }
-/* ─── Hero: full-bleed & lighter overlay ─── */
+/* ─── HERO: true full-bleed + lighter overlay ─── */
 .hero {
-  position: relative;         /* enable full-bleed hack */
-  left: 50%; right: 50%;      /* center on viewport */
-  margin-left: -50vw;          /* pull out to fill left */
-  margin-right: -50vw;         /* pull out to fill right */
-  width: 100vw;               /* exactly viewport-wide */
-  background-attachment: scroll !important;  /* kill any fixed bleed bugs */
+  position: relative !important;
+  width: 100vw !important;
+  margin-left: calc((100vw - 100%) / -2) !important;
+  margin-right: calc((100vw - 100%) / -2) !important;
+  background-attachment: scroll !important;
 }
 .hero::before {
-  background: rgba(10, 14, 39, 0.4) !important; /* lighter dark overlay */
+  background: rgba(10, 14, 39, 0.35) !important;
 }
 
-/* ─── Mobile: shrink Stability Layer by 40% ─── */
+/* ─── MOBILE (≤768px): shrink Stability Layer diagram by 40% ─── */
 @media (max-width: 768px) {
-  .hub-diagram {
-    transform: scale(0.6) !important;          /* shrink to 50% */
-    transform-origin: top center !important;   /* anchor at top */
-    height: auto !important;                   /* let it resize */
-    margin: 2rem auto !important;              /* keep it centered */
+  /* un-clip the section wrapper */
+  #hub-platform {
+    overflow: visible !important;
   }
-}  
+  /* uniformly scale only the diagram */
+  #hub-platform .hub-diagram {
+    width: 100vw !important;
+    max-width: none !important;
+    height: auto !important;
+    transform: scale(0.6) !important;          /* 60% size = shrink by 40% */
+    transform-origin: top center !important;
+    margin: 2rem auto !important;
+  }
+}
 </style>
 </head>
 <body>
