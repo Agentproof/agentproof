@@ -52,7 +52,43 @@
 }
 </script>
 <style>
+/* ─── GLOBAL RESET & HERO FULL‐BLEED OVERRIDE ─── */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden !important;
+  background: var(--dark) !important;
+}
+.hero {
+  /* full-bleed centering */
+  position: relative !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 100vw !important;
 
+  /* full-viewport height so no next section peeks through */
+  min-height: 100vh !important;
+
+  /* original hero padding/layout */
+  padding: 8rem 2rem 4rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+
+  /* background image */
+  background: url('assets/heroimage.png') center/cover no-repeat !important;
+  background-attachment: scroll !important;
+  overflow: hidden !important;
+}
+.hero::before {
+  background: rgba(10, 14, 39, 0.4) !important; /* lighter overlay */
+}
+.hero > * {
+  position: relative !important;
+  z-index: 1 !important;
+}
 .hero::before {
   background: rgba(10,14,39,0.4) !important;
 }
@@ -1437,32 +1473,23 @@ html, body {
   background: rgba(10, 14, 39, 0.4) !important; /* lighter overlay for contrast */
 }
 
-/* ─── MOBILE (≤768px): shrink Stability Layer spider-diagram ─── */
+/* ─── MOBILE (≤768px): SHOW & SHRINK STABILITY-LAYER DIAGRAM ─── */
 @media only screen and (max-width: 768px) {
-  /* allow the hub section to expand */
+  /* unclip the section wrapper */
   #hub-platform {
     overflow: visible !important;
   }
-  /* uniformly scale the diagram to 40% size */
+  /* force the spider-diagram to show and scale it to 60% */
   #hub-platform .hub-diagram {
+    display: block !important;
     transform: scale(0.6) !important;
     transform-origin: top center !important;
     margin: 2rem auto !important;
-    width: 100vw !important;
+    width: auto !important;
+    max-width: 100% !important;
     height: auto !important;
   }
 }
-/* ─── MOBILE (≤768px): swap to mobile-friendly diagram ─── */
-@media (max-width: 768px) {
-  /* hide the desktop spider */
-  #hub-platform .hub-diagram {
-    display: none !important;
-  }
-  /* show the mobile SVG fallback */
-  .hub-diagram-mobile {
-    display: block !important;
-  }
-}  
 </style>
 </head>
 <body>
