@@ -141,17 +141,19 @@ footer{
   color:var(--green);
   text-decoration:underline;
 }
-/* Keep pricing titles & prices aligned across cards */
+/* === Uniform heights so buttons line up === */
 .card h3{
-  min-height:48px;          /* reserve ≈ two text lines */
+  min-height:56px;                /* fits any 2-line title */
   display:flex;align-items:center;justify-content:center;
 }
 
 .card .price{
-  min-height:38px;          /* reserve one line of price text */
+  min-height:44px;                /* fits any 2-line price */
   display:flex;align-items:center;justify-content:center;
-  margin-bottom:1rem;       /* same gap above bullet list    */
 }
+
+/* feature list slot: 3 bullet lines worth */
+.card ul{min-height:108px}
 /* ----- Uniform trust badges ----- */
 .badge-row{
   display:flex;
