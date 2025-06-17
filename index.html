@@ -208,10 +208,10 @@ nav a::after{
 }
 nav a:hover::after{width:100%;}
 
-/* Hero Section - Full Bleed */
+/* Hero Section - Fixed Full Bleed */
 .hero{
   position:relative;
-  width:100%;
+  width:100vw;
   min-height:100vh;
   padding:8rem 2rem 4rem;
   text-align:center;
@@ -219,19 +219,20 @@ nav a:hover::after{width:100%;}
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  background-color:var(--dark); /* Fallback color */
   overflow:hidden;
+  margin-left:calc(-50vw + 50%);
+  margin-right:calc(-50vw + 50%);
 }
 
-/* Hero background image as pseudo-element for better control */
+/* Hero background image - fixed positioning */
 .hero::after{
   content:'';
   position:absolute;
   top:0;
-  left:-5%;
-  right:-5%;
+  left:0;
+  right:0;
   bottom:0;
-  width:110%;
+  width:100%;
   height:100%;
   background-image:url('assets/heroimage.png');
   background-size:cover;
@@ -244,7 +245,7 @@ nav a:hover::after{width:100%;}
   content:'';
   position:absolute;
   inset:0;
-  background:rgba(10, 14, 39, 0.35); /* Lighter overlay as requested */
+  background:rgba(10, 14, 39, 0.35);
   z-index:0;
   pointer-events:none;
 }
@@ -427,7 +428,7 @@ section{
   margin:0 auto;
 }
 
-/* Monitor Section */
+/* Monitor Section with Professional Icons */
 .monitor-section{
   padding:6rem 2rem;
   background:linear-gradient(180deg,transparent 0%,rgba(99, 102, 241, 0.05) 100%);
@@ -474,8 +475,11 @@ section{
 }
 
 .monitor-icon{
-  font-size:2rem;
+  width:48px;
+  height:48px;
   margin-bottom:1rem;
+  fill:var(--green);
+  opacity:0.9;
 }
 
 .monitor-card h3{
@@ -489,7 +493,7 @@ section{
   font-size:0.95rem;
 }
 
-/* Hub Diagram Styles */
+/* Hub Diagram Styles - Improved Mobile */
 .hub-diagram{
   position:relative;
   width:100%;
@@ -982,10 +986,12 @@ footer a{
     display:none;
   }
   
-  /* Hero adjustments */
+  /* Hero adjustments - fix full bleed */
   .hero{
     background-attachment:scroll;
     min-height:100vh;
+    margin-left:0;
+    margin-right:0;
   }
   
   .hero h1{
@@ -1025,16 +1031,29 @@ footer a{
     gap:1rem !important;
   }
   
-  /* Hub diagram mobile - Scale to 60% */
-  #hub-platform{
-    overflow:visible !important;
+  /* Hub diagram mobile - Better responsive handling */
+  .hub-diagram{
+    height:400px;
+    margin:2rem auto;
   }
   
-  .hub-diagram{
-    transform:scale(0.6) !important;
-    transform-origin:top center !important;
-    margin:2rem auto !important;
-    height:auto !important;
+  .hub-logo{
+    width:120px;
+    height:120px;
+    font-size:0.9rem;
+  }
+  
+  .orbit-group.left{
+    left:20px;
+  }
+  
+  .orbit-group.right{
+    right:20px;
+  }
+  
+  .orbit-box{
+    padding:8px 16px;
+    font-size:0.8rem;
   }
   
   .connection-lines{
@@ -1042,19 +1061,15 @@ footer a{
   }
   
   .capabilities-row{
-    position:relative !important;
-    bottom:auto !important;
-    left:auto !important;
-    transform:none !important;
-    display:grid !important;
-    grid-template-columns:repeat(2,1fr) !important;
-    gap:0.5rem !important;
-    padding:0.5rem !important;
-    margin-top:1rem;
+    position:static;
+    transform:none;
+    margin-top:2rem;
+    flex-wrap:wrap;
+    gap:1rem;
+    padding:0.75rem 1.5rem;
   }
   
   .capability-item{
-    flex-direction:column;
     font-size:0.8rem;
   }
   
@@ -1134,6 +1149,26 @@ footer a{
   /* Further reduce section padding */
   section{
     padding:2rem 1rem !important;
+  }
+  
+  /* Hub diagram - smaller on mobile */
+  .hub-diagram{
+    height:350px;
+  }
+  
+  .hub-logo{
+    width:100px;
+    height:100px;
+    font-size:0.8rem;
+  }
+  
+  .orbit-item{
+    margin:15px 0;
+  }
+  
+  .orbit-box{
+    padding:6px 12px;
+    font-size:0.75rem;
   }
   
   /* Service grid on mobile */
@@ -1226,7 +1261,7 @@ footer a{
   </div>
 </section>
 
-<!-- Complete Agent Observability -->
+<!-- Complete Agent Observability with Professional Icons -->
 <section id="monitor" class="monitor-section">
   <div class="container">
     <div class="section-header">
@@ -1236,37 +1271,52 @@ footer a{
     
     <div class="monitor-grid">
       <div class="monitor-card">
-        <div class="monitor-icon">🔍</div>
+        <svg class="monitor-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11 6C13.7614 6 16 8.23858 16 11M16.6569 16.6569C15.7091 17.6046 14.4183 18.1924 13 18.1924C11.5817 18.1924 10.2909 17.6046 9.34315 16.6569C8.39543 15.7091 7.80761 14.4183 7.80761 13C7.80761 11.5817 8.39543 10.2909 9.34315 9.34315C10.2909 8.39543 11.5817 7.80761 13 7.80761C14.4183 7.80761 15.7091 8.39543 16.6569 9.34315C17.6046 10.2909 18.1924 11.5817 18.1924 13C18.1924 14.4183 17.6046 15.7091 16.6569 16.6569ZM16.6569 16.6569L21 21M21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11C1 5.47715 5.47715 1 11 1C16.5228 1 21 5.47715 21 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
         <h3>Behavioral Fingerprinting</h3>
         <p>98.4% correlation between stability patterns and security vulnerabilities. Predict issues before they happen.</p>
       </div>
       
       <div class="monitor-card">
-        <div class="monitor-icon">🚨</div>
+        <svg class="monitor-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L2 7V12C2 16.5 4.23 20.68 7.62 23.15L12 24L16.38 23.15C19.77 20.68 22 16.5 22 12V7L12 2ZM12 11.5L16.5 7L18 8.5L12 14.5L8 10.5L9.5 9L12 11.5Z" fill="currentColor"/>
+        </svg>
         <h3>Security Pattern Analysis</h3>
         <p>Medium stability scores predict vulnerabilities with shocking accuracy. Know your risk profile instantly.</p>
       </div>
       
       <div class="monitor-card">
-        <div class="monitor-icon">⚡</div>
+        <svg class="monitor-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="currentColor"/>
+        </svg>
         <h3>Performance Metrics</h3>
         <p>Monitor latency, throughput, and resource consumption across all your deployments.</p>
       </div>
       
       <div class="monitor-card">
-        <div class="monitor-icon">💰</div>
+        <svg class="monitor-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 8L12 13L21 8L21 8C21 8 21 13.5 21 13.5C21 16.5 16.5 19 12 19C7.5 19 3 16.5 3 13.5V8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M3 8L12 3L21 8L12 13L3 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
         <h3>Cost Analytics</h3>
         <p>Track token usage, API calls, and spend optimization opportunities automatically.</p>
       </div>
       
       <div class="monitor-card">
-        <div class="monitor-icon">🔐</div>
+        <svg class="monitor-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17 8C17 10.7614 14.7614 13 12 13C9.23858 13 7 10.7614 7 8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8Z" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 15C8.13401 15 5 18.134 5 22H19C19 18.134 15.866 15 12 15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M21 10V15M21 15L18 12M21 15L24 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
         <h3>Access Patterns</h3>
         <p>Know what your agents touch, when they access it, and detect unauthorized behaviors.</p>
       </div>
       
       <div class="monitor-card">
-        <div class="monitor-icon">🎯</div>
+        <svg class="monitor-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM12 6C10.9 6 10 6.9 10 8C10 9.1 10.9 10 12 10C13.1 10 14 9.1 14 8C14 6.9 13.1 6 12 6ZM12 14C10.9 14 10 14.9 10 16C10 17.1 10.9 18 12 18C13.1 18 14 17.1 14 16C14 14.9 13.1 14 12 14Z" fill="currentColor"/>
+        </svg>
         <h3>Drift Detection</h3>
         <p>Identify when agent behavior changes over time, preventing model decay and ensuring consistency.</p>
       </div>
