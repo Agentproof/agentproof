@@ -55,6 +55,7 @@
 :root{
   --green:#0f9d58;
   --green-dark:#0c7b45;
+  --green-darker:#0a6639;
   --purple:#6366f1;
   --blue:#3b82f6;
   --dark:#0a0e27;
@@ -311,15 +312,15 @@ nav a:hover::after{width:100%;}
   display:inline-flex;
   align-items:center;
   gap:0.5rem;
-  padding:16px 40px;
+  padding:14px 32px;
   border-radius:50px;
   font-weight:500;
   text-decoration:none;
-  transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition:all 0.2s ease;
   cursor:pointer;
   border:none;
   font-size:0.95rem;
-  letter-spacing:0.5px;
+  letter-spacing:0.02em;
   position:relative;
   overflow:hidden;
 }
@@ -332,9 +333,9 @@ nav a:hover::after{width:100%;}
   width:0;
   height:0;
   border-radius:50%;
-  background:rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.05);
   transform:translate(-50%, -50%);
-  transition:width 0.6s, height 0.6s;
+  transition:width 0.4s, height 0.4s;
 }
 
 .btn:hover::before{
@@ -343,26 +344,33 @@ nav a:hover::after{width:100%;}
 }
 
 .btn-primary{
-  background:linear-gradient(135deg,var(--green) 0%,var(--green-dark) 100%);
+  background:var(--green);
   color:white;
-  box-shadow:0 4px 20px rgba(15, 157, 88, 0.25);
+  box-shadow:none;
+  font-weight:500;
+  letter-spacing:0.02em;
+  transition:all 0.2s ease;
 }
 
 .btn-primary:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 30px rgba(15, 157, 88, 0.35);
+  background:var(--green-dark);
+  transform:translateY(-1px);
+  box-shadow:0 2px 8px rgba(15, 157, 88, 0.15);
 }
 
 .btn-secondary{
   background:transparent;
   color:var(--text-primary);
-  border:1.5px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter:blur(10px);
+  border:1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter:none;
+  font-weight:500;
+  letter-spacing:0.02em;
+  transition:all 0.2s ease;
 }
 
 .btn-secondary:hover{
-  background:rgba(255, 255, 255, 0.05);
-  border-color:rgba(255, 255, 255, 0.4);
+  background:rgba(255, 255, 255, 0.03);
+  border-color:rgba(255, 255, 255, 0.3);
   transform:translateY(-1px);
 }
 
@@ -839,8 +847,8 @@ section{
 }
 
 .comparison-card{
-  background:var(--glass-bg);
-  backdrop-filter:blur(10px);
+  background:transparent;
+  backdrop-filter:none;
   border-radius:16px;
   padding:2.5rem;
   position:relative;
@@ -976,20 +984,22 @@ footer a{
 
 .modal-box button[type=submit]{
   width:100%;
-  background:linear-gradient(135deg,var(--green) 0%,var(--green-dark) 100%);
+  background:var(--green);
   color:white;
-  font-weight:600;
+  font-weight:500;
   border:none;
   border-radius:8px;
   padding:14px;
   cursor:pointer;
   font-size:1rem;
-  transition:all 0.3s;
+  transition:all 0.2s ease;
+  letter-spacing:0.02em;
 }
 
 .modal-box button[type=submit]:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 25px rgba(15, 157, 88, 0.4);
+  background:var(--green-dark);
+  transform:translateY(-1px);
+  box-shadow:0 2px 8px rgba(15, 157, 88, 0.15);
 }
 
 /* Responsive - Mobile */
@@ -1050,7 +1060,7 @@ footer a{
   
   /* Hub diagram mobile - Better responsive handling */
   .hub-diagram{
-    height:400px;
+    height:500px;
     margin:2rem auto;
   }
   
@@ -1080,7 +1090,7 @@ footer a{
   .capabilities-row{
     position:static;
     transform:none;
-    margin-top:2rem;
+    margin-top:4rem;
     flex-wrap:wrap;
     gap:1rem;
     padding:0.75rem 1.5rem;
@@ -1099,8 +1109,8 @@ footer a{
   .monitor-card,
   .comparison-card,
   .pricing-card{
-    background:rgba(255, 255, 255, 0.03);
-    border:1px solid rgba(255, 255, 255, 0.05);
+    background:transparent;
+    border:1px solid rgba(255, 255, 255, 0.1);
   }
 }
 
@@ -1176,7 +1186,7 @@ footer a{
   
   /* Hub diagram - smaller on mobile */
   .hub-diagram{
-    height:350px;
+    height:450px;
   }
   
   .hub-logo{
@@ -1192,6 +1202,10 @@ footer a{
   .orbit-box{
     padding:6px 12px;
     font-size:0.75rem;
+  }
+  
+  .capabilities-row{
+    margin-top:3rem;
   }
   
   /* Service grid on mobile */
@@ -1260,8 +1274,8 @@ footer a{
 <section class="stats-section">
   <div class="container">
     <div class="section-header">
-      <h2 class="section-title">Post-EchoLeaks: Why Teams Monitor Now</h2>
-      <p class="section-subtitle">Our emergency analysis of AI repositories revealed critical vulnerabilities hiding in plain sight - including unauthorized deployments</p>
+      <h2 class="section-title">Post-EchoLeaks - Monitoring Matters</h2>
+      <p class="section-subtitle">1,000+ agents analyzed. 60% have exploitable vulnerabilities. Yes, even yours. MCP, RAG, are not safety devices</p>
     </div>
     <div class="stats-grid">
       <div class="stat-card">
@@ -1270,7 +1284,7 @@ footer a{
       </div>
       <div class="stat-card">
         <div class="stat-number">61%</div>
-        <div class="stat-label">JavaScript Agents at Risk</div>
+        <div class="stat-label">Agents at Risk</div>
       </div>
       <div class="stat-card">
         <div class="stat-number">98.4%</div>
@@ -1357,7 +1371,7 @@ footer a{
 <section id="hub-platform" class="monitor-section">
   <div class="container">
     <div class="section-header">
-      <h2 class="section-title">The Stability Layer for AI Operations</h2>
+      <h2 class="section-title">The AI Stability Layer</h2>
       <p class="section-subtitle">One platform ensuring all your AI tools, frameworks, and workflows perform reliably</p>
     </div>
     
@@ -1581,19 +1595,19 @@ footer a{
     <p style="font-size:1.3rem;margin-bottom:3rem;color:var(--blue);">Expert guidance for regulated industries</p>
     
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-bottom:3rem;width:100%;">
-      <div style="text-align:left;background:var(--glass-bg);padding:2rem;border-radius:12px;border:1px solid var(--glass-border);backdrop-filter:blur(10px);width:100%;">
+      <div style="text-align:left;background:transparent;padding:2rem;border-radius:12px;border:1px solid var(--glass-border);width:100%;">
         <h3 style="color:var(--blue);margin-bottom:0.75rem;font-size:1.25rem;">🛡️ Insurance Resilience</h3>
         <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.6;">AI-specific certifications for cyber insurance compliance and claims readiness</p>
       </div>
-      <div style="text-align:left;background:var(--glass-bg);padding:2rem;border-radius:12px;border:1px solid var(--glass-border);backdrop-filter:blur(10px);width:100%;">
+      <div style="text-align:left;background:transparent;padding:2rem;border-radius:12px;border:1px solid var(--glass-border);width:100%;">
         <h3 style="color:var(--blue);margin-bottom:0.75rem;font-size:1.25rem;">✓ SOC2 Compliance</h3>
         <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.6;">Complete audit preparation and documentation for AI systems and workflows</p>
       </div>
-      <div style="text-align:left;background:var(--glass-bg);padding:2rem;border-radius:12px;border:1px solid var(--glass-border);backdrop-filter:blur(10px);width:100%;">
+      <div style="text-align:left;background:transparent;padding:2rem;border-radius:12px;border:1px solid var(--glass-border);width:100%;">
         <h3 style="color:var(--blue);margin-bottom:0.75rem;font-size:1.25rem;">🔒 ITAR Compliance</h3>
         <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.6;">Specialized guidance for defense contractors using AI technologies</p>
       </div>
-      <div style="text-align:left;background:var(--glass-bg);padding:2rem;border-radius:12px;border:1px solid var(--glass-border);backdrop-filter:blur(10px);width:100%;">
+      <div style="text-align:left;background:transparent;padding:2rem;border-radius:12px;border:1px solid var(--glass-border);width:100%;">
         <h3 style="color:var(--blue);margin-bottom:0.75rem;font-size:1.25rem;">🏛️ Regulatory Governance</h3>
         <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.6;">Healthcare, financial services, and government AI compliance frameworks</p>
       </div>
@@ -1612,12 +1626,12 @@ footer a{
     <p style="font-size:1.1rem;max-width:900px;margin:0 auto 3rem;">AgentProof seamlessly integrates with every major AI provider, framework, and deployment platform. Our universal compatibility means you're covered regardless of your tech stack.</p>
     
     <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;margin:3rem 0;opacity:0.8;max-width:1000px;margin-left:auto;margin-right:auto;width:100%;">
-      <div style="padding:1rem;background:var(--glass-bg);border-radius:8px;text-align:center;border:1px solid var(--glass-border);width:100%;">OpenAI</div>
-      <div style="padding:1rem;background:var(--glass-bg);border-radius:8px;text-align:center;border:1px solid var(--glass-border);width:100%;">Anthropic</div>
-      <div style="padding:1rem;background:var(--glass-bg);border-radius:8px;text-align:center;border:1px solid var(--glass-border);width:100%;">LangChain</div>
-      <div style="padding:1rem;background:var(--glass-bg);border-radius:8px;text-align:center;border:1px solid var(--glass-border);width:100%;">HuggingFace</div>
-      <div style="padding:1rem;background:var(--glass-bg);border-radius:8px;text-align:center;border:1px solid var(--glass-border);width:100%;">Vertex AI</div>
-      <div style="padding:1rem;background:var(--glass-bg);border-radius:8px;text-align:center;border:1px solid var(--glass-border);width:100%;">45+ more</div>
+      <div style="padding:1rem;background:transparent;border-radius:8px;text-align:center;border:1px solid var(--glass-border);width:100%;">OpenAI</div>
+      <div style="padding:1rem;background:transparent;border-radius:8px;text-align:center;border:1px solid var(--glass-border);width:100%;">Anthropic</div>
+      <div style="padding:1rem;background:transparent;border-radius:8px;text-align:center;border:1px solid var(--glass-border);width:100%;">LangChain</div>
+      <div style="padding:1rem;background:transparent;border-radius:8px;text-align:center;border:1px solid var(--glass-border);width:100%;">HuggingFace</div>
+      <div style="padding:1rem;background:transparent;border-radius:8px;text-align:center;border:1px solid var(--glass-border);width:100%;">Vertex AI</div>
+      <div style="padding:1rem;background:transparent;border-radius:8px;text-align:center;border:1px solid var(--glass-border);width:100%;">45+ more</div>
     </div>
     
     <p style="margin-top:3rem;font-size:1.1rem;margin-bottom:2rem;">Join our partner program to get priority support, co-marketing opportunities, and early access to new features.</p>
@@ -1788,9 +1802,11 @@ function showExitModal() {
   const claimBtn = document.createElement('a');
   claimBtn.href = '#pricing';
   claimBtn.className = 'btn btn-primary';
-  claimBtn.style.cssText = 'display:inline-block;padding:16px 40px;background:var(--green);color:white;text-decoration:none;border-radius:50px;font-weight:500;';
+  claimBtn.style.cssText = 'display:inline-block;padding:14px 32px;background:#0f9d58;color:white;text-decoration:none;border-radius:50px;font-weight:500;letter-spacing:0.02em;transition:all 0.2s ease;';
   claimBtn.textContent = 'Claim Discount';
   claimBtn.onclick = function() { exitModal.remove(); };
+  claimBtn.onmouseover = function() { this.style.background = '#0c7b45'; };
+  claimBtn.onmouseout = function() { this.style.background = '#0f9d58'; };
   
   const footer = document.createElement('p');
   footer.style.cssText = 'color:var(--text-muted);margin-top:1rem;font-size:0.9rem;';
