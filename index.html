@@ -2043,5 +2043,240 @@ function showExitModal() {
   });
 }
 </script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>AgentProof – AI Agent Observability & Trust Platform</title>
+  <meta name="description" content="Stop AI agent anomalies before they become headlines. Real-time observability and monitoring for autonomous tools. Get your security assessment in 2 hours."/>
+  <meta name="keywords" content="AI monitoring, agent observability, AI security, behavioral analysis, anomaly detection, AI compliance"/>
+
+  <!-- FontAwesome for Professional Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p8C3Tf3kV8vYpRj+6z1LsY5P5vZz+U1sZC8tW8z9CtKz+e3sQ2eQ/h4nYhO6m0b8U+J5cH5Gh8lM8d3SXUdQ7A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+  <style>
+  /* ─── Variables ─── */
+  :root {
+    --green: #0f9d58;
+    --green-dark: #0c7b45;
+    --purple: #6366f1;
+    --blue: #3b82f6;
+    --dark: #0a0e27;
+    --dark-light: #11173a;
+    --text-primary: #ffffff;
+    --text-secondary: #a8b2d1;
+    --text-muted: #64748b;
+    --glass-bg: rgba(255,255,255,0.05);
+    --glass-border: rgba(255,255,255,0.1);
+  }
+
+  /* ─── Global Reset & Layout ─── */
+  *, *::before, *::after { box-sizing: border-box; margin:0; padding:0; }
+  html, body {
+    width:100%; overflow-x:hidden;
+    background:var(--dark); color:var(--text-primary);
+    font-family:'Inter',sans-serif; line-height:1.7;
+  }
+
+  /* ─── Hero Full-Bleed & Full-Height ─── */
+  .hero {
+    position: relative; left: 50%; transform: translateX(-50%);
+    width:100vw; min-height:100vh;
+    padding:8rem 2rem 4rem;
+    display:flex; flex-direction:column; justify-content:center; align-items:center;
+    text-align:center;
+    background:url('assets/heroimage.png') center/cover no-repeat;
+    background-attachment:scroll;
+    overflow:hidden;
+  }
+  .hero::before {
+    content:''; position:absolute; inset:0;
+    background:rgba(10,14,39,0.4);
+    z-index:0;
+  }
+  .hero > * { position:relative; z-index:1; }
+  @media(max-width:768px) { .hero { background-attachment:scroll; } }
+
+  /* ─── Typography & Buttons ─── */
+  .hero h1 {
+    font-size:3rem; font-weight:800; line-height:1.2;
+    margin-bottom:1.5rem; max-width:1000px;
+    background:linear-gradient(135deg,var(--text-primary),var(--text-secondary));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    animation:fadeInUp 1s ease-out;
+  }
+  @media(max-width:1200px){ .hero h1{font-size:2.5rem;} .hero h1 br{display:none;} }
+  .hero .subtitle {
+    font-size:1.25rem; color:var(--text-secondary);
+    max-width:700px; margin-bottom:2rem;
+    animation:fadeInUp 1s ease-out 0.2s both;
+  }
+  .hero-cta { display:flex; gap:1rem; animation:fadeInUp 1s ease-out 0.4s both; }
+  @keyframes fadeInUp { from{opacity:0;transform:translateY(30px);} to{opacity:1;transform:translateY(0);} }
+  .btn { display:inline-flex; align-items:center; gap:0.5rem;
+    padding:16px 40px; border-radius:50px; text-decoration:none;
+    font-weight:500; position:relative; overflow:hidden; transition:0.3s;
+  }
+  .btn-primary { background:linear-gradient(135deg,var(--green),var(--green-dark)); color:#fff; }
+  .btn-secondary { background:transparent; border:1.5px solid rgba(255,255,255,0.2); backdrop-filter:blur(10px); }
+
+  /* ─── Header ─── */
+  header {
+    position:fixed; top:0; left:0; right:0;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:1.5rem 2rem; backdrop-filter:blur(10px); transition:0.3s;
+    z-index:100;
+  }
+  header.scrolled {
+    padding:1rem 2rem; backdrop-filter:blur(20px);
+    background:rgba(10,14,39,0.8);
+    border-bottom:1px solid var(--glass-border);
+  }
+  .logo { font-size:1.5rem; font-weight:700; }
+  nav { display:flex; gap:2rem; }
+  nav a {
+    color:var(--text-secondary); text-decoration:none; font-weight:500;
+    position:relative;
+  }
+  nav a::after {
+    content:''; position:absolute; bottom:-5px; left:0;
+    height:2px; width:0; background:var(--green); transition:0.3s;
+  }
+  nav a:hover::after, nav a:focus::after { width:100%; }
+
+  /* ─── Animated BG & Grid Overlay ─── */
+  .bg-animation{position:fixed;inset:0;z-index:-2;
+    background:linear-gradient(180deg,#0a0e27,#11173a);
+  }
+  .gradient-orb{
+    position:absolute;border-radius:50%;filter:blur(80px);
+    opacity:0.4;animation:float 20s infinite ease-in-out;
+  }
+  @keyframes float{0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(30px,-30px) scale(1.1);}66%{transform:translate(-20px,20px) scale(0.9);}}
+  .grid-overlay{position:fixed;inset:0;z-index:-1;
+    background-image:linear-gradient(rgba(255,255,255,0.01) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,0.01) 1px,transparent 1px);
+    background-size:50px 50px;
+  }
+  @media(min-width:769px){.grid-overlay{display:block;}}
+
+  /* ─── Stats & Monitor Section ─── */
+  .stats-section, .monitor-section, #hub-platform, #pricing, #services, #partners, #careers {
+    padding:4rem 2rem; max-width:100vw; overflow-x:hidden;
+  }
+  .stats-grid, .monitor-grid, .pricing-wrap, .comparison-grid { display:grid; gap:2rem; }
+  @media(max-width:1024px){ .pricing-wrap{grid-template-columns:1fr;} }
+  @media(max-width:768px){
+    .stats-grid{grid-template-columns:repeat(2,1fr);} .monitor-grid{grid-template-columns:1fr;}
+    .comparison-grid{grid-template-columns:1fr;}
+    nav{flex-wrap:wrap;gap:0.75rem;} nav a{font-size:0.85rem;}
+  }
+
+  /* ─── Complete Agent Observability Icons ─── */
+  .monitor-icon{font-size:2rem;margin-bottom:1rem;color:var(--green);}
+
+  /* ─── Stability Layer Mobile ─── */
+  @media(max-width:768px){
+    #hub-platform{overflow:visible;}
+    #hub-platform .hub-diagram{
+      display:block; transform:scale(0.6); transform-origin:top center;
+      margin:2rem auto; width:auto; max-width:100%; height:auto;
+    }
+  }
+
+  /* ─── Footer & Misc ─── */
+  footer{ text-align:center; padding:3rem 2rem; border-top:1px solid var(--glass-border); font-size:0.9rem; }
+  footer a{ color:var(--green); text-decoration:none; margin:0 0.5rem; }
+  </style>
+</head>
+<body>
+  <div class="bg-animation">
+    <div class="gradient-orb orb1"></div>
+    <div class="gradient-orb orb2"></div>
+    <div class="gradient-orb orb3"></div>
+  </div>
+  <div class="grid-overlay"></div>
+
+  <header id="header">
+    <div class="logo">AgentProof</div>
+    <nav>
+      <a href="#hub-platform">Platform<\/a>
+      <a href="#pricing">Pricing<\/a>
+      <a href="#services">Services<\/a>
+      <a href="#partners">Partners<\/a>
+      <a href="#careers">Careers<\/a>
+    <\/nav>
+  <\/header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Big companies find problems in months.<br>You can prevent them in minutes.<\/h1>
+    <p class="subtitle">Stop AI agent anomalies before they become headlines. Real-time observability and monitoring for autonomous tools.<\/p>
+    <div class="hero-cta">
+      <a href="#pricing" class="btn btn-primary">Get Started<\/a>
+      <a href="#monitor" class="btn btn-secondary">Learn More<\/a>
+    <\/div>
+    <div class="trust-strip">
+      <div class="trust-item">5-minute setup<\/div>
+      <div class="trust-item">Monitor & Certify Now<\/div>
+      <div class="trust-item">Insurance-resilience ready<\/div>
+      <div class="trust-item">98.4% accuracy<\/div>
+    <\/div>
+  <\/section>
+
+  <!-- Complete Agent Observability -->
+  <section id="monitor" class="monitor-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Complete Agent Observability<\/h2>
+        <p class="section-subtitle">Industry-leading monitoring powered by insights from 1,000+ AI agent analyses.<\/p>
+      <\/div>
+      <div class="monitor-grid">
+        <div class="monitor-card"><i class="fas fa-search monitor-icon"><\/i><h3>Behavioral Fingerprinting<\/h3><p>Predict issues before they happen.<\/p><\/div>
+        <div class="monitor-card"><i class="fas fa-shield-alt monitor-icon"><\/i><h3>Security Pattern Analysis<\/h3><p>Know your risk profile instantly.<\/p><\/div>
+        <div class="monitor-card"><i class="fas fa-tachometer-alt monitor-icon"><\/i><h3>Performance Metrics<\/h3><p>Monitor latency, throughput, and resource consumption.<\/p><\/div>
+        <div class="monitor-card"><i class="fas fa-dollar-sign monitor-icon"><\/i><h3>Cost Analytics<\/h3><p>Track token usage and spend optimization automatically.<\/p><\/div>
+        <div class="monitor-card"><i class="fas fa-key monitor-icon"><\/i><h3>Access Patterns<\/h3><p>Detect unauthorized behaviors in real time.<\/p><\/div>
+        <div class="monitor-card"><i class="fas fa-chart-line monitor-icon"><\/i><h3>Drift Detection<\/h3><p>Prevent model decay and ensure consistency.<\/p><\/div>
+      <\/div>
+    <\/div>
+  <\/section>
+
+  <!-- Stability Layer -->
+  <section id="hub-platform" class="monitor-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">The Stability Layer for AI Operations<\/h2>
+        <p class="section-subtitle">One platform ensuring all your AI tools, frameworks, and workflows perform reliably<\/p>
+      <\/div>
+      <div class="hub-diagram">
+        <div class="hub-center"><div class="hub-logo"><div class="pulse-ring"><\/div><div class="pulse-ring" style="animation-delay:1s;"><\/div><div class="pulse-ring" style="animation-delay:2s;"><\/div><span style="font-weight:700;font-size:1.2rem;">AgentProof<\/span><\/div><\/div>
+        <div class="orbit-container">
+          <div class="orbit-group left">
+            <div class="orbit-item" style="--delay:0s;"><div class="orbit-box">Internal Agents<\/div><\/div>
+            <div class="orbit-item" style="--delay:0.5s;"><div class="orbit-box">RAG Applications<\/div><\/div>
+            <div class="orbit-item" style="--delay:1s;"><div class="orbit-box">Agent Workflows<\/div><\/div>
+            <div class="orbit-item" style="--delay:1.5s;"><div class="orbit-box">AI Pipelines<\/div><\/div>
+          <\/div>
+          <div class="orbit-group right">
+            <div class="orbit-item" style="--delay:0.2s;"><div class="orbit-box provider">OpenAI<\/div><\/div>
+            <div class="orbit-item" style="--delay:0.7s;"><div class="orbit-box provider">Anthropic<\/div><\/div>
+            <div class="orbit-item" style="--delay:1.2s;"><div class="orbit-box provider">Custom LLMs<\/div><\/div>
+            <div class="orbit-item" style="--delay:1.7s;"><div class="orbit-box provider">Open Source<\/div><\/div>
+          <\/div>
+        <\/div>
+        <svg class="connection-lines" viewBox="0 0 800 400"><defs><linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:var(--green);stop-opacity:0"/><stop offset="50%" style="stop-color:var(--green);stop-opacity:1"/><stop offset="100%" style="stop-color:var(--green);stop-opacity:0"/></linearGradient></defs><path class="data-flow" d="M100 200 Q400 200 700 200"/><path class="data-flow" d="M150 100 Q400 200 650 100"/><path class="data-flow" d="M150 300 Q400 200 650 300"/><\/svg>
+        <div class="capabilities-row">
+          <div class="capability-item"><i class="fas fa-shield-alt capability-icon"><\/i><span>Stability<\/span><\/div>
+          <div class="capability-item"><i class="fas fa-chart-bar capability-icon"><\/i><span>Performance<\/span><\/div>
+          <div class="capability-item"><i class="fas fa-sync-alt capability-icon"><\/i><span>Reliability<\/span><\/div>
+          <div class="capability-item"><i class="fas fa-check capability-icon"><\/i><span>Compliance<\/span><\/div>
+        <\/div>
+      <\/div>
+      <div class="flow-cta"><p class="flow-value">See how your AI ecosystem connects<\/p><a href="#pricing" class="btn btn-primary">Start Analysis<\/a><\/div>
+    <\/div>
+  <\/section>
 </body>
 </html>
