@@ -29,6 +29,7 @@
             --gradient-primary: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
             --gradient-danger: linear-gradient(135deg, #ff3838 0%, #cc0000 100%);
             --gradient-warning: linear-gradient(135deg, #ff6600 0%, #ff8800 100%);
+            --blue: #00a8ff;
         }
         
         * {
@@ -136,6 +137,12 @@
             text-transform: uppercase;
             animation: pulse 2s ease-in-out infinite;
             text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .alert-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 56, 56, 0.3);
         }
         
         .behavioral-badge {
@@ -170,11 +177,16 @@
             letter-spacing: -0.03em;
         }
         
-        .gradient-text {
-            background: var(--gradient-danger);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .score-number {
+            color: var(--danger);
+        }
+        
+        .score-slash {
+            color: var(--text-primary);
+        }
+        
+        .score-total {
+            color: var(--blue);
         }
         
         .hero-subtitle {
@@ -187,6 +199,11 @@
         
         .medical-highlight {
             color: var(--danger);
+            font-weight: 600;
+        }
+        
+        .drift-highlight {
+            color: var(--warning);
             font-weight: 600;
         }
         
@@ -223,12 +240,25 @@
             border-color: var(--danger);
         }
         
+        .stat-card.behavioral {
+            border-color: rgba(255, 102, 0, 0.3);
+            background: linear-gradient(135deg, rgba(255, 102, 0, 0.05) 0%, var(--bg-card) 100%);
+        }
+        
+        .stat-card.behavioral:hover {
+            border-color: var(--warning);
+        }
+        
         .stat-value {
             font-size: clamp(36px, 5vw, 48px);
             font-weight: 900;
             color: var(--danger);
             margin-bottom: 8px;
             letter-spacing: -0.02em;
+        }
+        
+        .stat-value.behavioral {
+            color: var(--warning);
         }
         
         .stat-label {
@@ -323,16 +353,20 @@
         .company-count {
             font-size: 13px;
             color: var(--text-tertiary);
-            margin-bottom: 4px;
+            margin-bottom: 12px;
         }
         
         .drift-indicator {
-            font-size: 12px;
+            font-size: 14px;
             color: var(--warning);
             margin-top: 8px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            font-weight: 600;
+            font-weight: 700;
+            background: rgba(255, 102, 0, 0.1);
+            padding: 4px 12px;
+            border-radius: 12px;
+            display: inline-block;
         }
         
         /* Comparison Section */
@@ -794,9 +828,9 @@
                     <a href="https://agentproof.ai" class="alert-badge">CRITICAL SECURITY ANALYSIS</a>
                     <a href="https://agentproof.ai#pricing" class="behavioral-badge">BEHAVIORAL ANALYSIS</a>
                 </div>
-                <h1>YC's Bottom 10% Score <span class="gradient-text">387/1000</span></h1>
+                <h1>YC's Bottom 10% Score <span class="score-number">387</span><span class="score-slash">/</span><span class="score-total">1000</span></h1>
                 <p class="hero-subtitle">
-                    48% of YC companies have critical vulnerabilities. <span class="medical-highlight">Medical AI shows the highest vulnerability rates</span> with scores as low as 298. Static testing isn't enough - drift scores reveal runtime behavioral anomalies.
+                    48% of YC companies have critical vulnerabilities. <span class="medical-highlight">Medical AI shows the highest vulnerability rates</span> with scores as low as 298. Static testing isn't enough - <span class="drift-highlight">behavioral drift scores reveal runtime anomalies that could destroy your company</span>.
                 </p>
             </div>
         </section>
@@ -821,10 +855,10 @@
                     <div class="stat-context">Lowest category - critical patient risk</div>
                 </div>
                 
-                <div class="stat-card critical">
-                    <div class="stat-value">71</div>
+                <div class="stat-card behavioral">
+                    <div class="stat-value behavioral">71</div>
                     <div class="stat-label">Highest Drift Score</div>
-                    <div class="stat-context">Behavioral anomalies in production</div>
+                    <div class="stat-context">Behavioral anomalies actively happening in production</div>
                 </div>
             </div>
         </section>
@@ -894,6 +928,38 @@
             </div>
         </section>
         
+        <section class="comparison container">
+            <h2 class="comparison-title">The Path to Secure AI - Reach 900+ with ARIA</h2>
+            <div class="score-progression">
+                <div class="progress-line"></div>
+                
+                <div class="score-milestone">
+                    <div class="milestone-score" style="color: var(--danger)">387</div>
+                    <div class="milestone-label">Bottom 10%</div>
+                </div>
+                
+                <div class="score-milestone">
+                    <div class="milestone-score" style="color: var(--warning)">520</div>
+                    <div class="milestone-label">YC Average</div>
+                </div>
+                
+                <div class="score-milestone">
+                    <div class="milestone-score" style="color: #ffaa00">540</div>
+                    <div class="milestone-label">Industry Avg</div>
+                </div>
+                
+                <div class="score-milestone">
+                    <div class="milestone-score" style="color: var(--primary)">750+</div>
+                    <div class="milestone-label">With Remediation</div>
+                </div>
+                
+                <div class="score-milestone">
+                    <div class="milestone-score" style="color: var(--primary)">900+</div>
+                    <div class="milestone-label">ARIA Monitoring</div>
+                </div>
+            </div>
+        </section>
+        
         <section class="vulnerability-breakdown container">
             <div class="section-header">
                 <h2 class="section-title">Vulnerability Distribution</h2>
@@ -934,38 +1000,6 @@
             </div>
         </section>
         
-        <section class="comparison container">
-            <h2 class="comparison-title">The Path to Secure AI</h2>
-            <div class="score-progression">
-                <div class="progress-line"></div>
-                
-                <div class="score-milestone">
-                    <div class="milestone-score" style="color: var(--danger)">387</div>
-                    <div class="milestone-label">Bottom 10%</div>
-                </div>
-                
-                <div class="score-milestone">
-                    <div class="milestone-score" style="color: var(--warning)">520</div>
-                    <div class="milestone-label">YC Average</div>
-                </div>
-                
-                <div class="score-milestone">
-                    <div class="milestone-score" style="color: #ffaa00">540</div>
-                    <div class="milestone-label">Industry Avg</div>
-                </div>
-                
-                <div class="score-milestone">
-                    <div class="milestone-score" style="color: var(--primary)">750+</div>
-                    <div class="milestone-label">With Remediation</div>
-                </div>
-                
-                <div class="score-milestone">
-                    <div class="milestone-score" style="color: var(--primary)">900+</div>
-                    <div class="milestone-label">ARIA Monitoring</div>
-                </div>
-            </div>
-        </section>
-        
         <section class="cta-section">
             <div class="container">
                 <h2 class="cta-title">Your YC Company Needs Protection</h2>
@@ -973,8 +1007,8 @@
                     Join the companies achieving 900+ ARIA scores with active monitoring. Don't let medical AI vulnerabilities become your liability.
                 </p>
                 <div class="cta-buttons">
-                    <a href="https://agentproof.ai" class="cta-button">Get Protection Now</a>
                     <button class="cta-button cta-button-secondary" onclick="openModal()">YC Partners Only</button>
+                    <a href="https://agentproof.ai" class="cta-button">Get Protection Now</a>
                 </div>
             </div>
         </section>
