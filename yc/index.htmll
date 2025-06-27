@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="48% of YC's AI batch has critical vulnerabilities. See the data that proves why Agentproof.ai is essential for YC companies.">
+    <title>YC Batch Security Analysis | Agentproof.ai</title>
+    
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --danger: #ff3838;
+            --danger-dark: #cc0000;
+            --warning: #ffaa00;
+            --bg-dark: #0a0a0a;
+            --bg-darker: #000000;
+            --bg-card: #111111;
+            --bg-card-hover: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-tertiary: #666666;
+            --border: #222222;
+            --gradient-primary: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            --gradient-danger: linear-gradient(135deg, #ff3838 0%, #cc0000 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        
+        .yc-badge {
+            background: #ff6600;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .alert-badge {
+            display: inline-block;
+            background: var(--danger);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        h1 {
+            font-size: 56px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        
+        .gradient-text {
+            background: var(--gradient-danger);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        /* Key Stats */
+        .key-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+        
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .stat-card.critical {
+            border-color: var(--danger);
+        }
+        
+        .stat-card.critical::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255, 56, 56, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .stat-value {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--danger);
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        
+        .stat-context {
+            font-size: 14px;
+            color: var(--text-tertiary);
+        }
+        
+        /* Score Visualization */
+        .score-section {
+            margin-bottom: 80px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+        }
+        
+        .score-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .score-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .score-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--danger);
+        }
+        
+        .ai-type {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .aria-score {
+            font-size: 64px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .aria-score::after {
+            content: '/1000';
+            font-size: 20px;
+            color: var(--text-tertiary);
+            font-weight: 400;
+            position: absolute;
+            bottom: 8px;
+            margin-left: 4px;
+        }
+        
+        .score-critical { color: var(--danger); }
+        .score-high { color: #ff6600; }
+        .score-medium { color: var(--warning); }
+        
+        .company-count {
+            font-size: 14px;
+            color: var(--text-tertiary);
+        }
+        
+        /* Comparison Section */
+        .comparison {
+            background: linear-gradient(135deg, #0a1f0a 0%, var(--bg-card) 100%);
+            border: 1px solid #1a3a1a;
+            border-radius: 16px;
+            padding: 60px 40px;
+            margin-bottom: 80px;
+            text-align: center;
+        }
+        
+        .comparison-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 40px;
+            color: var(--primary);
+        }
+        
+        .score-comparison {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 40px;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .score-box {
+            padding: 40px;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+        }
+        
+        .score-label {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+        
+        .big-score {
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 1;
+        }
+        
+        .vs {
+            font-size: 24px;
+            color: var(--text-tertiary);
+            font-weight: 600;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .cta-title {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: var(--bg-dark);
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            color: var(--text-primary);
+        }
+        
+        .modal-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+        
+        .modal-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .form-submit {
+            width: 100%;
+            padding: 14px 24px;
+            background: var(--gradient-primary);
+            color: var(--bg-dark);
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-tertiary);
+        }
+        
+        .footer-logo {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+        
+        /* Additional Data Visualization */
+        .vulnerability-breakdown {
+            margin-bottom: 80px;
+        }
+        
+        .vuln-chart {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 40px;
+            overflow: hidden;
+        }
+        
+        .vuln-bars {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            height: 300px;
+            margin-bottom: 20px;
+        }
+        
+        .vuln-bar {
+            flex: 1;
+            margin: 0 10px;
+            background: var(--gradient-danger);
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .vuln-bar:hover {
+            opacity: 0.8;
+            transform: translateY(-5px);
+        }
+        
+        .vuln-bar-label {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+        
+        .vuln-bar-value {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--danger);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">agentproof.ai</div>
+            <div class="yc-badge">YC Partners Only</div>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="alert-badge">CRITICAL SECURITY ANALYSIS</div>
+                <h1>YC's AI Batch Scores <span class="gradient-text">298/1000</span></h1>
+                <p class="hero-subtitle">
+                    48% of YC companies have critical vulnerabilities. Medical AI startups averaging just 298 out of 1000 on ARIA security scores. Yes, even yours.
+                </p>
+            </div>
+        </section>
+        
+        <section class="container">
+            <div class="key-stats">
+                <div class="stat-card critical">
+                    <div class="stat-value">574</div>
+                    <div class="stat-label">Total Vulnerabilities</div>
+                    <div class="stat-context">Across just 29 YC companies analyzed</div>
+                </div>
+                
+                <div class="stat-card critical">
+                    <div class="stat-value">70%</div>
+                    <div class="stat-label">Below 600/1000</div>
+                    <div class="stat-context">Failing basic security standards</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-value">298</div>
+                    <div class="stat-label">Lowest Score</div>
+                    <div class="stat-context">Autonomous medical AI at highest risk</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="score-section container">
+            <div class="section-header">
+                <h2 class="section-title">ARIA Scores by AI Category</h2>
+                <p class="section-subtitle">Out of 1000 possible points. Lower scores = higher risk.</p>
+            </div>
+            
+            <div class="score-grid">
+                <div class="score-card">
+                    <div class="ai-type">Medical AI</div>
+                    <div class="aria-score score-critical">298</div>
+                    <div class="company-count">1 company</div>
+                </div>
+                
+                <div class="score-card">
+                    <div class="ai-type">Voice Medical</div>
+                    <div class="aria-score score-critical">315</div>
+                    <div class="company-count">1 company</div>
+                </div>
+                
+                <div class="score-card">
+                    <div class="ai-type">Healthcare</div>
+                    <div class="aria-score score-high">432</div>
+                    <div class="company-count">1 company</div>
+                </div>
+                
+                <div class="score-card">
+                    <div class="ai-type">AI Agents</div>
+                    <div class="aria-score score-high">473</div>
+                    <div class="company-count">9 companies</div>
+                </div>
+                
+                <div class="score-card">
+                    <div class="ai-type">Voice AI</div>
+                    <div class="aria-score score-high">531</div>
+                    <div class="company-count">4 companies</div>
+                </div>
+                
+                <div class="score-card">
+                    <div class="ai-type">AI Testing</div>
+                    <div class="aria-score score-medium">654</div>
+                    <div class="company-count">2 companies</div>
+                </div>
+                
+                <div class="score-card">
+                    <div class="ai-type">AI Safety</div>
+                    <div class="aria-score score-medium">682</div>
+                    <div class="company-count">3 companies</div>
+                </div>
+                
+                <div class="score-card">
+                    <div class="ai-type">Security</div>
+                    <div class="aria-score" style="color: var(--primary)">784</div>
+                    <div class="company-count">1 company</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="vulnerability-breakdown container">
+            <div class="section-header">
+                <h2 class="section-title">Vulnerability Distribution</h2>
+                <p class="section-subtitle">Average vulnerabilities per company by category</p>
+            </div>
+            
+            <div class="vuln-chart">
+                <div class="vuln-bars">
+                    <div class="vuln-bar" style="height: 100%">
+                        <div class="vuln-bar-value">52</div>
+                        <div class="vuln-bar-label">Medical AI</div>
+                    </div>
+                    <div class="vuln-bar" style="height: 92%">
+                        <div class="vuln-bar-value">48</div>
+                        <div class="vuln-bar-label">Voice Medical</div>
+                    </div>
+                    <div class="vuln-bar" style="height: 65%">
+                        <div class="vuln-bar-value">34</div>
+                        <div class="vuln-bar-label">Healthcare</div>
+                    </div>
+                    <div class="vuln-bar" style="height: 56%">
+                        <div class="vuln-bar-value">29</div>
+                        <div class="vuln-bar-label">AI Agents</div>
+                    </div>
+                    <div class="vuln-bar" style="height: 42%">
+                        <div class="vuln-bar-value">22</div>
+                        <div class="vuln-bar-label">Voice AI</div>
+                    </div>
+                    <div class="vuln-bar" style="height: 10%">
+                        <div class="vuln-bar-value">5</div>
+                        <div class="vuln-bar-label">AI Testing</div>
+                    </div>
+                    <div class="vuln-bar" style="height: 4%">
+                        <div class="vuln-bar-value">2</div>
+                        <div class="vuln-bar-label">AI Safety</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="comparison container">
+            <h2 class="comparison-title">The Agentproof.ai Advantage</h2>
+            <div class="score-comparison">
+                <div class="score-box">
+                    <div class="score-label">Without Safety Focus</div>
+                    <div class="big-score" style="color: var(--danger)">520</div>
+                </div>
+                <div class="vs">VS</div>
+                <div class="score-box">
+                    <div class="score-label">With Safety Focus</div>
+                    <div class="big-score" style="color: var(--primary)">670</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="cta-section">
+            <div class="container">
+                <h2 class="cta-title">Your YC Company Needs Agentproof.ai</h2>
+                <p class="cta-subtitle">
+                    Join the companies improving their ARIA scores by 150+ points. Secure your AI before it's too late.
+                </p>
+                <button class="cta-button" onclick="openModal()">YC Partners Only - Accept</button>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">agentproof.ai</div>
+            <p>© 2025 Agentproof. Making AI reliable, compliant, and trustworthy.</p>
+        </div>
+    </footer>
+    
+    <!-- Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h3 class="modal-title">Sign up now</h3>
+            <p class="modal-subtitle">Get priority access to Agentproof.ai for your YC company</p>
+            <form id="contactForm" action="https://formsubmit.co/jared@striv.ai" method="POST">
+    <input type="hidden" name="_subject" value="YC Demo Request">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://agentproof.ai/yc?success=true">
+                <div class="form-group">
+                    <label class="form-label" for="name">Full Name</label>
+                    <input type="text" id="name" name="name" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="email">Work Email</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="company">YC Company Name</label>
+                    <input type="text" id="company" name="company" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="batch">YC Batch</label>
+                    <input type="text" id="batch" name="batch" class="form-input" placeholder="e.g., W25, S24" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="message">What's your biggest AI security concern?</label>
+                    <textarea id="message" name="message" class="form-input" rows="3" required></textarea>
+                </div>
+                
+                <button type="submit" class="form-submit">Request Meeting</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        function openModal() {
+            document.getElementById('contactModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            document.getElementById('contactModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                company: formData.get('company'),
+                batch: formData.get('batch'),
+                message: formData.get('message'),
+                source: 'YC Landing Page',
+                timestamp: new Date().toISOString()
+            };
+            
+            // Send email to jared@striv.ai
+            // In production, this would be handled by a backend service
+            const mailtoLink = `mailto:jared@striv.ai?subject=YC Demo Request - ${data.company} (${data.batch})&body=Name: ${data.name}%0D%0AEmail: ${data.email}%0D%0ACompany: ${data.company}%0D%0ABatch: ${data.batch}%0D%0A%0D%0AConcern:%0D%0A${data.message}`;
+            
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            event.target.innerHTML = '<div style="text-align: center; padding: 40px;"><h3 style="color: var(--primary); margin-bottom: 16px;">Request Sent!</h3><p>We\'ll reach out within 24 hours to schedule your demo.</p></div>';
+            
+            setTimeout(() => {
+                closeModal();
+                event.target.reset();
+                location.reload();
+            }, 3000);
+        }
+        
+        // Close modal on outside click
+        document.getElementById('contactModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
